@@ -1,0 +1,32 @@
+<resources>
+    
+    <string name="title_activity_maps">Map</string>
+
+    <string name="coursier_img_description">Coursier wallon\'s logo</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button">Login</string>
+    <string name="text_separator">Or</string>
+    <string name="guest_button">Continue As Guest</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forgot_password_text">Forgot password ?</string>
+    <string name="my_line_tag">myLine</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="first_name_hint">First Name</string>
+    <string name="last_name_hint">Last Name</string>
+    <string name="phone_number_hint">Phone Number</string>
+    <string name="birthday_hint">Birthday</string>
+    <string name="address_hint">Address</string>
+    <string name="street_hint">Street</string>
+    <string name="house_number_hint">N°</string>
+    <string name="box_number_hint">Box N°</string>
+    <string name="postcode_hint">CP</string>
+    <string name="home_label">Home</string>
+    <string name="logout_label">logout</string>
+    <string name="my_profile_label">My profile</string>
+    <string name="settings_label">Settings</string>
+
+    <string name="empty_input_error">The email and the password can not be empty!</string>
+    <string name="app_name">CoursierWallon</string>
+</resources>

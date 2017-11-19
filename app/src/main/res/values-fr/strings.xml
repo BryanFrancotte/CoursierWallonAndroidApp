@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Coursier Wallon</string>
+
+    <string name="birthday_hint">Date de naissance</string>
+    <string name="box_number_hint">Boite N°</string>
+    <string name="confirm_password_hint">Confirmer le mot de passe</string>
+    <string name="coursier_img_description">Couriser wallon</string>
+    <string name="email_hint">Email</string>
+    <string name="empty_input_error">Le mail et le mot de passe ne peuvent être vide !</string>
+    <string name="first_name_hint">Prénom</string>
+    <string name="forgot_password_text">Mot de passe oublier</string>
+    <string name="guest_button">Continuer en tant qu\'invité</string>
+    <string name="home_label">Acceuille</string>
+    <string name="house_number_hint">N°</string>
+    <string name="last_name_hint">Nom de famille</string>
+    <string name="login_button">Se connecter</string>
+    <string name="logout_label">Se deconnecter</string>
+    <string name="my_line_tag">myLine</string>
+    <string name="my_profile_label">Mon profile</string>
+    <string name="password_hint">Mot de passe</string>
+    <string name="phone_number_hint">Numéro de GSM</string>
+    <string name="postcode_hint">Code postal</string>
+    <string name="register">S\'enregistrer</string>
+    <string name="settings_label">Options</string>
+    <string name="sign_up">S\'inscrire</string>
+    <string name="street_hint">Rue</string>
+    <string name="text_separator">Ou</string>
+    <string name="address_hint">adresse</string>
+</resources>

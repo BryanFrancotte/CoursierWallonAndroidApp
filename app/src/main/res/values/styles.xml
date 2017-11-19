@@ -1,0 +1,44 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CoursierTheme" parent="AppTheme" >
+        <item name="android:navigationBarColor">@android:color/holo_red_dark</item>
+        <item name="android:statusBarColor">@android:color/holo_red_dark</item>
+        <item name="colorPrimary">@color/coursierColorPrimary</item>
+        <item name="colorPrimaryDark">@color/coursierColorPrimaryDark</item>
+        <item name="colorAccent">@color/coursierColorAccent</item>
+    </style>
+
+    <style name="CoursierTheme.NoToolbar" parent="CoursierTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="CoursierTheme.RedBackgroud" parent="CoursierTheme" >
+        <item name="android:windowBackground">@color/coursierColorPrimaryDark</item>
+        <item name="android:colorBackground">@color/coursierColorPrimaryDark</item>
+        <item name="colorPrimary">@color/coursierColorPrimary</item>
+    </style>
+
+    <style name="CoursierTheme.RedBackgroud.NoToolbar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="separator">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_gravity">center_vertical|fill_horizontal</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+</resources>

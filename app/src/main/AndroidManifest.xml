@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.coursierwallon.bryan.coursierwallonandroidapp">
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/coursier_wallon_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/coursier_wallon_logo"
+        android:supportsRtl="true"
+        android:theme="@style/CoursierTheme.NoToolbar">
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <!-- Google Original activity ***********************************************************-->
+        <activity
+            android:name=".View.MapsActivity">
+
+        </activity>
+        <!--*************************************************************************************-->
+        <activity
+            android:name=".View.pickupParcelActivity"
+            android:label="@string/title_activity_maps"
+            android:theme="@style/CoursierTheme.RedBackgroud">
+
+        </activity>
+        <activity
+            android:name=".View.SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".View.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar">
+
+        </activity>
+        <activity
+            android:name=".View.SignUpActivity"
+            android:label="@string/sign_up"
+            android:theme="@style/CoursierTheme.NoToolbar"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".View.LoginActivity">
+
+        </activity>
+        <activity
+            android:name=".View.InfoSignUpActivity"
+            android:label="@string/sign_up"
+            android:theme="@style/CoursierTheme.NoToolbar"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".View.SignUpActivity">
+
+        </activity>
+        <activity
+            android:name=".View.HomeActivity"
+            android:label="@string/home_label"
+            android:theme="@style/CoursierTheme.NoToolbar">
+
+        </activity>
+    </application>
+
+</manifest>

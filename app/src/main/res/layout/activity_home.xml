@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <include
+        layout="@layout/toolbar_custom"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/parcelButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/letterButton"
+            android:layout_marginStart="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="70dp"
+            android:background="@color/coursierColorPrimary"
+            android:textColor="@android:color/white"
+            android:text="Parcel"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/letterButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/parcelButton"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/parcelButton"
+            android:layout_marginBottom="183dp"
+            android:background="@color/coursierColorPrimary"
+            android:textColor="@android:color/white"
+            android:text="Letter"
+            android:textAllCaps="false" />
+    </RelativeLayout>
+</android.support.v7.widget.LinearLayoutCompat>
