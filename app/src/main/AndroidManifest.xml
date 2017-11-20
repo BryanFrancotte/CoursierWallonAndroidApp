@@ -34,9 +34,9 @@
         </activity>
         <!--*************************************************************************************-->
         <activity
-            android:name=".View.pickupParcelActivity"
+            android:name=".View.PickupParcelActivity"
             android:label="@string/title_activity_maps"
-            android:theme="@style/CoursierTheme.RedBackgroud">
+            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar">
 
         </activity>
         <activity

@@ -11,18 +11,17 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 
 /**
  * Created by franc on 11-11-17.
  */
 
 public class UserDAO {
-    public User connexion(UserTemp userTemp)throws Exception{
+    public UserModel connexion(UserTemp userTemp)throws Exception{
 
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
         String outputJsonString = gson.toJson(userTemp);
-        URL url = new URL("http://testbryan.azurewebsites.net/api/User/Connexion");
+        URL url = new URL("http://.azurewebsites.net/api/UserModel/Connexion");
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setRequestMethod("POST");
         connection.setDoInput(true);
@@ -45,7 +44,7 @@ public class UserDAO {
             connection.disconnect();
             inputJsonString = stringBuilder.toString();
             Log.i("Contenu inputJsonString", inputJsonString);
-            return gson.fromJson(inputJsonString,User.class);
+            return gson.fromJson(inputJsonString,UserModel.class);
         }
         return null;
     }

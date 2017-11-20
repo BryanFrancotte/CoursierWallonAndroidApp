@@ -1,9 +1,11 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Button;
 
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
@@ -18,15 +20,21 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.customToolbar);
+        Toolbar toolbar = findViewById(R.id.customToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
-        parcelButton = (Button) findViewById(R.id.parcelButton);
-        letterButton = (Button) findViewById(R.id.letterButton);
+        parcelButton = findViewById(R.id.parcelButton);
+        letterButton = findViewById(R.id.letterButton);
 
-
+        parcelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentToOrder = new Intent(HomeActivity.this, PickupParcelActivity.class);
+                startActivity(intentToOrder);
+            }
+        });
     }
 
     @Override

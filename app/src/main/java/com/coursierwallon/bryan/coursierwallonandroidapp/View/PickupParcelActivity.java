@@ -2,11 +2,17 @@ package com.coursierwallon.bryan.coursierwallonandroidapp.View;
 
 import android.location.Address;
 import android.location.Geocoder;
-import android.support.v4.app.FragmentActivity;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
-import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.GoogleMapsConstant;
+import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.*;
+import com.coursierwallon.bryan.coursierwallonandroidapp.DAO.AddressDAO;
+import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AddressModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -18,32 +24,35 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+/**
+ * Created by franc on 19-11-17.
+ */
+
+public class PickupParcelActivity extends AppCompatActivity implements OnMapReadyCallback{
 
     private GoogleMap map;
+    private ListView addressList;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        setContentView(R.layout.activity_pickup_parcel);
+
+        Toolbar myToolbar = findViewById(R.id.customToolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        SupportMapFragment mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        addressList = findViewById(R.id.list_address_pickup);
+        new GetAllPickupAddressByUser().execute(DevConstant.USER_MJ);
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
@@ -54,19 +63,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .title(getString(R.string.coursier_map_marker_name))
                 .snippet(getString(R.string.coursier_map_marker_snippet))
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-        /*googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                Toast.makeText(PickupParcelActivity.this, marker.getTitle(), Toast.LENGTH_LONG).show();
-                return true;
-            }
-        });*/
         map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 
             @Override
             public void onMapClick(LatLng point) {
 
-                Geocoder geocoder = new Geocoder(MapsActivity.this);
+                Geocoder geocoder = new Geocoder(PickupParcelActivity.this);
                 List<Address> listNewAddress = null;
                 try {
                     listNewAddress = geocoder.getFromLocation(point.latitude, point.longitude,1);
@@ -89,5 +91,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng place = new LatLng(lat,lon);
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(place, zoom);
         map.moveCamera(cameraUpdate);
+    }
+
+    private class GetAllPickupAddressByUser extends AsyncTask<Long, Void, ArrayList<AddressModel>>{
+
+        @Override
+        protected ArrayList<AddressModel> doInBackground(Long... longs) {
+            AddressDAO dao = new AddressDAO();
+            ArrayList<AddressModel> addressList;
+            try {
+                addressList = dao.getAllPickUpAddressByUser(longs[0]);
+            }catch (Exception e){
+                e.printStackTrace();
+                addressList = null;
+            }
+            return addressList;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<AddressModel> addresses){
+            ArrayAdapter<AddressModel> adapter = new ArrayAdapter<AddressModel>(PickupParcelActivity.this,R.layout.list_view_address, addresses);
+            addressList.setAdapter(adapter);
+        }
     }
 }
