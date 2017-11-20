@@ -61,6 +61,14 @@ public class AddressModel {
         this.localityIdAddress = localityIdAddress;
     }
 
+    public LocalityModel getLocalityIdAddressNavigation() {
+        return localityIdAddressNavigation;
+    }
+
+    public void setLocalityIdAddressNavigation(LocalityModel localityIdAddressNavigation) {
+        this.localityIdAddressNavigation = localityIdAddressNavigation;
+    }
+
     public String toString(){
         return this.street + ", " + this.houseNumber + ((this.boxNumber != null)?(" (" +this.boxNumber + ")\n"):"\n")
                 + this.localityIdAddressNavigation.getName() + ", " + this.localityIdAddressNavigation.getPostalCode();

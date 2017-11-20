@@ -6,12 +6,16 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.*;
 import com.coursierwallon.bryan.coursierwallonandroidapp.DAO.AddressDAO;
+import com.coursierwallon.bryan.coursierwallonandroidapp.ListViewAdapter.AddressArrayAdapter;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AddressModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
 import com.google.android.gms.maps.CameraUpdate;
@@ -51,6 +55,15 @@ public class PickupParcelActivity extends AppCompatActivity implements OnMapRead
 
         addressList = findViewById(R.id.list_address_pickup);
         new GetAllPickupAddressByUser().execute(DevConstant.USER_MJ);
+
+        addressList.setClickable(true);
+        addressList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String address = view.findViewById(R.id.address_line_1).toString();
+                Toast.makeText(PickupParcelActivity.this, address, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -62,7 +75,7 @@ public class PickupParcelActivity extends AppCompatActivity implements OnMapRead
                 .position(new LatLng(GoogleMapsConstant.COURSIER_LAT, GoogleMapsConstant.COURSIER_LNG))
                 .title(getString(R.string.coursier_map_marker_name))
                 .snippet(getString(R.string.coursier_map_marker_snippet))
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bike_marker_s)));
         map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 
             @Override
@@ -77,12 +90,6 @@ public class PickupParcelActivity extends AppCompatActivity implements OnMapRead
                 }
                 Address addressInterestPoint = listNewAddress.get(0);
                 String stringAddress = addressInterestPoint.getAddressLine(0);
-
-
-                Toast.makeText(getApplicationContext(), stringAddress, Toast.LENGTH_LONG).show();
-
-
-
             }
         });
     }
@@ -110,7 +117,7 @@ public class PickupParcelActivity extends AppCompatActivity implements OnMapRead
 
         @Override
         protected void onPostExecute(ArrayList<AddressModel> addresses){
-            ArrayAdapter<AddressModel> adapter = new ArrayAdapter<AddressModel>(PickupParcelActivity.this,R.layout.list_view_address, addresses);
+            ArrayAdapter<AddressModel> adapter = new AddressArrayAdapter(PickupParcelActivity.this,R.layout.list_view_address, addresses);
             addressList.setAdapter(adapter);
         }
     }
