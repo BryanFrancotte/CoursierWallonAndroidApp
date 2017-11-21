@@ -2,16 +2,14 @@ package com.coursierwallon.bryan.coursierwallonandroidapp.ListViewAdapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.GoogleMapsConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AddressModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
 import com.coursierwallon.bryan.coursierwallonandroidapp.View.PickupParcelActivity;
@@ -26,16 +24,18 @@ import java.util.List;
 public class AddressArrayAdapter extends ArrayAdapter<AddressModel> {
 
     private Context context;
+    private PickupParcelActivity activity;
     private List<AddressModel> lstAddress;
 
     public AddressArrayAdapter (Context context, int resource, ArrayList<AddressModel> lstAddress){
         super(context, resource, lstAddress);
         this.context = context;
+        this.activity = (PickupParcelActivity) context;
         this.lstAddress = lstAddress;
         this.lstAddress = lstAddress;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, View convertView, final ViewGroup parent){
 
         AddressModel address = lstAddress.get(position);
 
@@ -46,10 +46,10 @@ public class AddressArrayAdapter extends ArrayAdapter<AddressModel> {
         TextView addressLine2 = view.findViewById(R.id.address_line_2);
         final CheckBox checkBox = view.findViewById(R.id.list_view_address_check_box);
 
-        String addressLine1String = address.getStreet()
+        final String addressLine1String = address.getStreet()
                 + ", " + address.getHouseNumber()
                 + ((address.getBoxNumber() != null)?(" (" +address.getBoxNumber() + ")" ): "");
-        String addressLine2String = address.getLocalityIdAddressNavigation().getName()
+        final String addressLine2String = address.getLocalityIdAddressNavigation().getName()
                 + ", " + address.getLocalityIdAddressNavigation().getPostalCode();
 
         addressLine1.setText(addressLine1String);
@@ -59,7 +59,23 @@ public class AddressArrayAdapter extends ArrayAdapter<AddressModel> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkBox.setChecked(true);
+                for(int i = 0; i < parent.getChildCount(); i++){
+                    if(!view.equals(parent.getChildAt(i))) {
+                        View child = parent.getChildAt(i);
+                        CheckBox childCheckBox = child.findViewById(R.id.list_view_address_check_box);
+                        if(childCheckBox.isChecked()){
+                            childCheckBox.setChecked(false);
+                        }
+                    }
+                }
+                checkBox.setChecked(!checkBox.isChecked());
+                activity.removeCurrentMarker();
+                if(checkBox.isChecked()) {
+                    String addressText = addressLine1String + " " + addressLine2String;
+                    activity.goToLocationZoom(addressText);
+                }else {
+                    activity.initLocationZoom(GoogleMapsConstant.COURSIER_LAT, GoogleMapsConstant.COURSIER_LNG, GoogleMapsConstant.MAP_ZOOM);
+                }
             }
         });
 

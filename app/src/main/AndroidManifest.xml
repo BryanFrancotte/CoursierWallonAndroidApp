@@ -36,7 +36,8 @@
         <activity
             android:name=".View.PickupParcelActivity"
             android:label="@string/title_activity_maps"
-            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar">
+            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"
+            android:parentActivityName=".View.HomeActivity">
 
         </activity>
         <activity
@@ -74,6 +75,13 @@
             android:name=".View.HomeActivity"
             android:label="@string/home_label"
             android:theme="@style/CoursierTheme.NoToolbar">
+
+        </activity>
+        <activity
+            android:name=".View.DepositParcelActivity"
+            android:label="@string/title_activity_deposit"
+            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"
+            android:parentActivityName=".View.PickupParcelActivity">
 
         </activity>
     </application>

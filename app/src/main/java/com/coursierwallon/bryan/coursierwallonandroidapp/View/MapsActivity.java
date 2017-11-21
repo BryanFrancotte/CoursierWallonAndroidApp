@@ -69,7 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Geocoder geocoder = new Geocoder(MapsActivity.this);
                 List<Address> listNewAddress = null;
                 try {
-                    listNewAddress = geocoder.getFromLocation(point.latitude, point.longitude,1);
+                    listNewAddress = geocoder.getFromLocation(point.latitude, point.longitude,GoogleMapsConstant.MAX_RESULT);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -1,7 +1,7 @@
 <resources>
     
-    <string name="title_activity_maps">Map</string>
-
+    <string name="title_activity_maps">Pick Up Address</string>
+    <string name="title_activity_deposit">Destination address</string>
     <string name="coursier_map_marker_name">Coursier Wallon</string>
     <string name="coursier_map_marker_snippet">Coursier wallon Namur\'s office</string>
     <string name="coursier_img_description">Coursier wallon\'s logo</string>

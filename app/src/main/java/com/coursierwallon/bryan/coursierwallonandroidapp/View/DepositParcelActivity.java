@@ -1,19 +1,17 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.View;
 
-import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.*;
+import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.DevConstant;
+import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.GoogleMapsConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.DAO.AddressDAO;
 import com.coursierwallon.bryan.coursierwallonandroidapp.ListViewAdapter.AddressArrayAdapter;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AddressModel;
@@ -33,10 +31,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by franc on 19-11-17.
+ * Created by franc on 21-11-17.
  */
-//TODO: use the design pattern templates
-public class PickupParcelActivity extends AppCompatActivity implements OnMapReadyCallback{
+
+public class DepositParcelActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap map;
     private ListView addressList;
@@ -56,25 +54,7 @@ public class PickupParcelActivity extends AppCompatActivity implements OnMapRead
         mapFragment.getMapAsync(this);
 
         addressList = findViewById(R.id.list_address_pickup);
-        new GetAllPickupAddressByUser().execute(DevConstant.USER_MJ);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        this.getMenuInflater().inflate(R.menu.menu_order, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.order_menu_next:
-                //Intent intentToDeposit = new Intent(this, DepositParcelActivity.class);
-                //startActivity(intentToDeposit);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        new GetAllDepositAddressByUser().execute(DevConstant.USER_MJ);
     }
 
     @Override
@@ -96,7 +76,7 @@ public class PickupParcelActivity extends AppCompatActivity implements OnMapRead
     }
 
     public void goToLocationZoom(String address){
-        Geocoder geocoder = new Geocoder(PickupParcelActivity.this);
+        Geocoder geocoder = new Geocoder(DepositParcelActivity.this);
         List<Address> lstResult = null;
         try{
             lstResult = geocoder.getFromLocationName(address, GoogleMapsConstant.MAX_RESULT);
@@ -121,14 +101,14 @@ public class PickupParcelActivity extends AppCompatActivity implements OnMapRead
         }
     }
 
-    private class GetAllPickupAddressByUser extends AsyncTask<Long, Void, ArrayList<AddressModel>>{
+    private class GetAllDepositAddressByUser extends AsyncTask<Long, Void, ArrayList<AddressModel>> {
 
         @Override
         protected ArrayList<AddressModel> doInBackground(Long... longs) {
             AddressDAO dao = new AddressDAO();
             ArrayList<AddressModel> addressList = null;
             try {
-                addressList = dao.getAllPickUpAddressByUser(longs[0]);
+                addressList = dao.getAllDepositAddressByUser(longs[0]);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -137,7 +117,7 @@ public class PickupParcelActivity extends AppCompatActivity implements OnMapRead
 
         @Override
         protected void onPostExecute(ArrayList<AddressModel> addresses){
-            ArrayAdapter<AddressModel> adapter = new AddressArrayAdapter(PickupParcelActivity.this,R.layout.list_view_address, addresses);
+            ArrayAdapter<AddressModel> adapter = new AddressArrayAdapter(DepositParcelActivity.this,R.layout.list_view_address, addresses);
             addressList.setAdapter(adapter);
             findViewById(R.id.loadingPanel).setVisibility(View.GONE);
             addressList.setVisibility(View.VISIBLE);
