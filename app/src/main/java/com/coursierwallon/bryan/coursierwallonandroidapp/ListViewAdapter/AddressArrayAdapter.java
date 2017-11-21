@@ -10,9 +10,11 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AddressModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
+import com.coursierwallon.bryan.coursierwallonandroidapp.View.PickupParcelActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +55,13 @@ public class AddressArrayAdapter extends ArrayAdapter<AddressModel> {
         addressLine1.setText(addressLine1String);
         addressLine2.setText(addressLine2String);
         checkBox.setClickable(false);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkBox.setChecked(true);
+            }
+        });
 
         return view;
     }
