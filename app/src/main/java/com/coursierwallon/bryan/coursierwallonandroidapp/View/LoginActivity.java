@@ -1,5 +1,6 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.View;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.coursierwallon.bryan.coursierwallonandroidapp.DAO.UserDAO;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.*;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
+import com.google.gson.Gson;
 
 /**
  * Created by bryan on 17-10-17.
@@ -45,8 +47,8 @@ public class LoginActivity extends AppCompatActivity{
         guestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentToHome = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intentToHome);
+               //Intent intentToHome = new Intent(LoginActivity.this, HomeActivity.class);
+                //startActivity(intentToHome);
             }
         });
 
@@ -58,26 +60,30 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
     }
-    private class UserConnexion extends AsyncTask<UserTemp, Void, UserModel> {
+    private class UserConnexion extends AsyncTask<UserTemp, Void, AccessToken> {
 
         @Override
-        protected UserModel doInBackground(UserTemp... userTemps) {
+        protected AccessToken doInBackground(UserTemp... userTemps) {
             UserDAO userDAO = new UserDAO();
-            UserModel user;
+            AccessToken token = null;
             try {
-                user = userDAO.connexion(userTemps[0]);
-                Log.i("Contenu inputJsonString",  user.toString());
+                token = userDAO.connexion(userTemps[0]);
+                Log.i("Contenu inputJsonString",  token.toString());
             }catch (Exception e) {
                 e.printStackTrace();
-                user = null;
             }
-            return user;
+            return token;
         }
 
         @Override
-        protected void onPostExecute(UserModel user){
-            if(user != null){
-                Toast.makeText(LoginActivity.this,"Welcome" + user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_SHORT).show();
+        protected void onPostExecute(AccessToken token){
+            if(token != null){
+                Gson gson = new Gson();
+                String tokenConverted = gson.toJson(token);
+                Intent intentToHome = new Intent(LoginActivity.this, HomeActivity.class);
+                intentToHome.putExtra("accessToken", tokenConverted);
+
+                startActivity(intentToHome);
             }else{
                 Toast.makeText(LoginActivity.this,"connexion Error", Toast.LENGTH_SHORT).show();
             }

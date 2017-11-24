@@ -1,5 +1,6 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.DAO;
 
+import android.content.Intent;
 import android.util.Log;
 
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.*;
@@ -17,11 +18,11 @@ import java.net.URL;
  */
 
 public class UserDAO {
-    public UserModel connexion(UserTemp userTemp)throws Exception{
+    public AccessToken connexion(UserTemp userTemp)throws Exception{
 
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
         String outputJsonString = gson.toJson(userTemp);
-        URL url = new URL("http://.azurewebsites.net/api/UserModel/Connexion");
+        URL url = new URL("http://apicoursier.azurewebsites.net/api/Jwt");
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setRequestMethod("POST");
         connection.setDoInput(true);
@@ -44,7 +45,7 @@ public class UserDAO {
             connection.disconnect();
             inputJsonString = stringBuilder.toString();
             Log.i("Contenu inputJsonString", inputJsonString);
-            return gson.fromJson(inputJsonString,UserModel.class);
+            return gson.fromJson(inputJsonString,AccessToken.class);
         }
         return null;
     }
