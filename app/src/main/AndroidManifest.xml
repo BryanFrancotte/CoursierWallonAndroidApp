@@ -84,6 +84,13 @@
             android:parentActivityName=".View.PickupParcelActivity">
 
         </activity>
+        <activity
+            android:name=".View.DateTimePicker"
+            android:label="date And Time"
+            android:theme="@style/CoursierTheme.NoToolbar"
+            android:parentActivityName=".View.DepositParcelActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -31,4 +31,5 @@
     <string name="address_hint">adresse</string>
     <string name="title_activity_maps">Adresse de retrait</string>
     <string name="title_activity_deposit">Adresse de destination</string>
+    <string name="error_empty_address">Aucune adresse selectionnée</string>
 </resources>

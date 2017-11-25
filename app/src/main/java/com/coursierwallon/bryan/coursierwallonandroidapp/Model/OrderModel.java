@@ -27,6 +27,11 @@ public class OrderModel {
     private AddressModel pickUpAddressNavigation;
     private UserModel userIdOrderNavigation;
 
+    public OrderModel(String state, long userIdOrder) {
+        this.state = state;
+        this.userIdOrder = userIdOrder;
+    }
+
     public OrderModel(long orderNumber, String state, Date pickUpDate, Time pickUpStartTime, Time pickUpEndTime, Date depositDate, Time depositeStartTime, Time depositeEndTime, String deliveryType, long userIdOrder, long pickUpAddress, long depositAddress, long billingAddress, AddressModel billingAddressNavigation, AddressModel depositAddressNavigation, AddressModel pickUpAddressNavigation, UserModel userIdOrderNavigation) {
         this.orderNumber = orderNumber;
         this.state = state;

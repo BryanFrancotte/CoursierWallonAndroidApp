@@ -2,6 +2,8 @@ package com.coursierwallon.bryan.coursierwallonandroidapp.ListViewAdapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.location.Address;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +14,6 @@ import android.widget.TextView;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.GoogleMapsConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AddressModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
-import com.coursierwallon.bryan.coursierwallonandroidapp.View.PickupParcelActivity;
 import com.coursierwallon.bryan.coursierwallonandroidapp.ViewTemplates.AddressPicker;
 
 import java.util.ArrayList;
@@ -27,16 +28,16 @@ public class AddressArrayAdapter extends ArrayAdapter<AddressModel> {
     private Context context;
     private AddressPicker activity;
     private List<AddressModel> lstAddress;
+    private int currentPosition;
 
     public AddressArrayAdapter (Context context, int resource, ArrayList<AddressModel> lstAddress){
         super(context, resource, lstAddress);
         this.context = context;
         this.activity = (AddressPicker) context;
         this.lstAddress = lstAddress;
-        this.lstAddress = lstAddress;
     }
 
-    public View getView(int position, View convertView, final ViewGroup parent){
+    public View getView(final int position, View convertView, final ViewGroup parent){
 
         AddressModel address = lstAddress.get(position);
 
@@ -74,8 +75,11 @@ public class AddressArrayAdapter extends ArrayAdapter<AddressModel> {
                 if(checkBox.isChecked()) {
                     String addressText = addressLine1String + " " + addressLine2String;
                     activity.goToLocationZoom(addressText);
+                    activity.setCurrentSelectedItem(position);
+
                 }else {
                     activity.initLocationZoom(GoogleMapsConstant.COURSIER_LAT, GoogleMapsConstant.COURSIER_LNG, GoogleMapsConstant.MAP_ZOOM);
+                    activity.setCurrentSelectedItem(-1);
                 }
             }
         });
@@ -85,6 +89,7 @@ public class AddressArrayAdapter extends ArrayAdapter<AddressModel> {
 
     @Override
     public AddressModel getItem(int position) {
+
         return super.getItem(position);
     }
 }

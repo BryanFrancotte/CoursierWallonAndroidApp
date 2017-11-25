@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.DevConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.GoogleMapsConstant;
@@ -41,6 +42,19 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
     private GoogleMap map;
     private ListView addressList;
     private Marker currentMarker = null;
+    private int currentSelectedItem = -1;
+
+    public int getCurrentSelectedItem() {
+        return currentSelectedItem;
+    }
+
+    public void setCurrentSelectedItem(int currentSelectedItem) {
+        this.currentSelectedItem = currentSelectedItem;
+    }
+
+    public ListView getAddressList() {
+        return addressList;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,7 +96,11 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.order_menu_next:
-                setActionOnNextButton();
+                if(currentSelectedItem != -1){
+                    actionOnNextButton();
+                }else{
+                    Toast.makeText(this, R.string.error_empty_address, Toast.LENGTH_SHORT).show();
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -132,7 +150,7 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
         }
     }
 
-    public abstract void setActionOnNextButton();
+    public abstract void actionOnNextButton();
 
     public abstract ArrayList<AddressModel> getAddressMethod(long userId) throws Exception;
 
