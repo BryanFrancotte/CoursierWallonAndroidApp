@@ -8,5 +8,5 @@ public class ApiConstant {
     public final static String URL_BASE = "http://apicoursier.azurewebsites.net/api/";
 
     public final static String URL_GetAllPickUpAddressByUser = "Address/GetAllPickUpByUser/";
-    public final static String URL_GetAllDepositAddressByUser = "Address/GetAllDepositByUse/";
+    public final static String URL_GetAllDepositAddressByUser = "Address/GetAllDepositByUser/";
 }

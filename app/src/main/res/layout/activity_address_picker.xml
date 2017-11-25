@@ -30,7 +30,7 @@
 
     <ListView
         android:visibility="gone"
-        android:id="@+id/list_address_pickup"
+        android:id="@+id/list_address"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"

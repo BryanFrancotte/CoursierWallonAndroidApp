@@ -13,6 +13,7 @@ import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.GoogleMapsCons
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AddressModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
 import com.coursierwallon.bryan.coursierwallonandroidapp.View.PickupParcelActivity;
+import com.coursierwallon.bryan.coursierwallonandroidapp.ViewTemplates.AddressPicker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +25,13 @@ import java.util.List;
 public class AddressArrayAdapter extends ArrayAdapter<AddressModel> {
 
     private Context context;
-    private PickupParcelActivity activity;
+    private AddressPicker activity;
     private List<AddressModel> lstAddress;
 
     public AddressArrayAdapter (Context context, int resource, ArrayList<AddressModel> lstAddress){
         super(context, resource, lstAddress);
         this.context = context;
-        this.activity = (PickupParcelActivity) context;
+        this.activity = (AddressPicker) context;
         this.lstAddress = lstAddress;
         this.lstAddress = lstAddress;
     }
