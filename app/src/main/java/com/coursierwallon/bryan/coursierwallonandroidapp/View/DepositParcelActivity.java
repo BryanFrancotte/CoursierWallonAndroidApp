@@ -1,9 +1,7 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.View;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.coursierwallon.bryan.coursierwallonandroidapp.DAO.AddressDAO;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AddressModel;
@@ -27,7 +25,7 @@ public class DepositParcelActivity extends AddressPicker{
         OrderModel newOrder = gson.fromJson(newOrderString, OrderModel.class);
         AddressModel DepositAddress = (AddressModel) getAddressList().getItemAtPosition(getCurrentSelectedItem());
         newOrder.setDepositAddress(DepositAddress.getAddressId());
-        Intent intentToDateTimePicker = new Intent(this, DateTimePicker.class);
+        Intent intentToDateTimePicker = new Intent(this, DateTimePickerActivity.class);
         intentToDateTimePicker.putExtra("newOrder", gson.toJson(newOrder));
         startActivity(intentToDateTimePicker);
     }

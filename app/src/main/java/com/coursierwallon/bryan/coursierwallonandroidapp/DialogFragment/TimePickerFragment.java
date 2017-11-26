@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.widget.TimePicker;
 
+import com.coursierwallon.bryan.coursierwallonandroidapp.R;
+import com.coursierwallon.bryan.coursierwallonandroidapp.View.DateTimePickerActivity;
+
 import java.util.Calendar;
 
 /**
@@ -28,5 +31,29 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         // Do something with the time chosen by the user
+        String text = hourOfDay + "h" +((minute < 10)? "0" + minute : minute);
+        DateTimePickerActivity activity = (DateTimePickerActivity) this.getActivity();
+        setAction(text, activity);
+    }
+
+    public void setAction(String text, DateTimePickerActivity activity){
+        switch (activity.getClickedButtonId()){
+            case R.id.date_time_layout_pickupTimeStart_button:
+                activity.getPickUpStarTimeText().setText(text);
+                activity.setPickUpStartTime(text);
+                break;
+            case R.id.date_time_layout_pickupTimeEnd_button:
+                activity.getPickUpEndTimeText().setText(text);
+                activity.setPickUpEndTime(text);
+                break;
+            case R.id.date_time_layout_depositTimeStart_button:
+                activity.getDepositStartTimeText().setText(text);
+                activity.setDepositStartTime(text);
+                break;
+            case R.id.date_time_layout_depositTimeEnd_button:
+                activity.getDepositEndTimeText().setText(text);
+                activity.setDepositEndTime(text);
+                break;
+        }
     }
 }
