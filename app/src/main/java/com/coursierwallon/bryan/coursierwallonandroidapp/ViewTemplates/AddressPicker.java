@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.DevConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.GoogleMapsConstant;
-import com.coursierwallon.bryan.coursierwallonandroidapp.ListViewAdapter.AddressArrayAdapter;
+import com.coursierwallon.bryan.coursierwallonandroidapp.Adapter.AddressArrayAdapter;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AddressModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
 import com.google.android.gms.maps.CameraUpdate;

@@ -7,11 +7,16 @@ package com.coursierwallon.bryan.coursierwallonandroidapp.Model;
 public class ParcelModel {
 
     private long parcelId;
-    private String parcelType;
+    private int parcelType;
     private long orderNumberParcel;
     private OrderModel orderNumberParcelNavigation;
 
-    public ParcelModel(long parcelId, String parcelType, long orderNumberParcel, OrderModel orderNumberParcelNavigation) {
+    public ParcelModel(int parcelType, OrderModel order) {
+        this.parcelType = parcelType;
+        orderNumberParcelNavigation = order;
+    }
+
+    public ParcelModel(long parcelId, int parcelType, long orderNumberParcel, OrderModel orderNumberParcelNavigation) {
         this.parcelId = parcelId;
         this.parcelType = parcelType;
         this.orderNumberParcel = orderNumberParcel;
@@ -26,11 +31,11 @@ public class ParcelModel {
         this.parcelId = parcelId;
     }
 
-    public String getParcelType() {
+    public int getParcelType() {
         return parcelType;
     }
 
-    public void setParcelType(String parcelType) {
+    public void setParcelType(int parcelType) {
         this.parcelType = parcelType;
     }
 

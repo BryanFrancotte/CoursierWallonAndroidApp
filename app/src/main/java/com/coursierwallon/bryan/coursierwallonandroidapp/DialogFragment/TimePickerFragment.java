@@ -10,6 +10,7 @@ import android.widget.TimePicker;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
 import com.coursierwallon.bryan.coursierwallonandroidapp.View.DateTimePickerActivity;
 
+import java.sql.Time;
 import java.util.Calendar;
 
 /**
@@ -33,26 +34,27 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         // Do something with the time chosen by the user
         String text = hourOfDay + "h" +((minute < 10)? "0" + minute : minute);
         DateTimePickerActivity activity = (DateTimePickerActivity) this.getActivity();
-        setAction(text, activity);
+        Time time = activity.convertStringToTime(text);
+        setAction(text, activity, time);
     }
 
-    public void setAction(String text, DateTimePickerActivity activity){
+    public void setAction(String text, DateTimePickerActivity activity, Time time){
         switch (activity.getClickedButtonId()){
             case R.id.date_time_layout_pickupTimeStart_button:
                 activity.getPickUpStarTimeText().setText(text);
-                activity.setPickUpStartTime(text);
+                activity.setPickUpStartTime(time);
                 break;
             case R.id.date_time_layout_pickupTimeEnd_button:
                 activity.getPickUpEndTimeText().setText(text);
-                activity.setPickUpEndTime(text);
+                activity.setPickUpEndTime(time);
                 break;
             case R.id.date_time_layout_depositTimeStart_button:
                 activity.getDepositStartTimeText().setText(text);
-                activity.setDepositStartTime(text);
+                activity.setDepositStartTime(time);
                 break;
             case R.id.date_time_layout_depositTimeEnd_button:
                 activity.getDepositEndTimeText().setText(text);
-                activity.setDepositEndTime(text);
+                activity.setDepositEndTime(time);
                 break;
         }
     }

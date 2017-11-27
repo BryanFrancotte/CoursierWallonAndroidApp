@@ -1,7 +1,6 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.View;
 
 import android.content.Intent;
-import android.view.View;
 
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.DevConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.OrderConstant;
@@ -21,7 +20,7 @@ public class PickupParcelActivity extends AddressPicker{
     @Override
     public void actionOnNextButton() {
         Gson gson = new Gson();
-        OrderModel newOrder = new OrderModel(OrderConstant.state, DevConstant.USER_MJ);
+        OrderModel newOrder = new OrderModel(OrderConstant.STATE, DevConstant.USER_MJ);
         AddressModel PickUpAddress = (AddressModel) getAddressList().getItemAtPosition(getCurrentSelectedItem());
         newOrder.setPickUpDate(OrderConstant.getDate());
         newOrder.setBillingAddress(PickUpAddress.getAddressId());

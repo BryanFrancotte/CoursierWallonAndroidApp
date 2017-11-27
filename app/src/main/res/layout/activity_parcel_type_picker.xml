@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/toolbar_custom"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select the parcel type :"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"/>
+        <worker8.com.github.radiogroupplus.RadioGroupPlus
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:id="@+id/grid_type_S">
+                    <RadioButton
+                        android:id="@+id/type_S"
+                        android:layout_column="0"
+                        android:layout_row="0"
+                        android:onClick="onRadioButtonClicked"/>
+                    <TextView
+                        android:id="@+id/name_type_S"
+                        android:text="Type S"
+                        android:layout_column="1"
+                        android:layout_row="0"/>
+                    <TextView
+                        android:id="@+id/wiegth_type_S"
+                        android:text="Poids : 10kg"
+                        android:layout_column="1"
+                        android:layout_row="1"/>
+                    <TextView
+                        android:id="@+id/length_type_S"
+                        android:text="longueur : 30cm"
+                        android:layout_column="1"
+                        android:layout_row="2"/>
+                    <TextView
+                        android:id="@+id/width_type_S"
+                        android:text="largeur : 40cm"
+                        android:layout_column="1"
+                        android:layout_row="3"/>
+                    <TextView
+                        android:id="@+id/heigth_type_S"
+                        android:text="hauteur : 30cm"
+                        android:layout_column="1"
+                        android:layout_row="4"/>
+                </GridLayout>
+                <GridLayout
+                    android:id="@+id/grid_type_M"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_row="0">
+
+                    <RadioButton
+                        android:id="@+id/type_M"
+                        android:layout_column="0"
+                        android:layout_row="0"
+                        android:onClick="onRadioButtonClicked"/>
+
+                    <TextView
+                        android:id="@+id/name_type_M"
+                        android:layout_column="1"
+                        android:layout_row="0"
+                        android:text="Type M" />
+
+                    <TextView
+                        android:id="@+id/wiegth_type_M"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_row="1"
+                        android:text="Poids : 30kg" />
+
+                    <TextView
+                        android:id="@+id/length_type_M"
+                        android:layout_column="1"
+                        android:layout_row="2"
+                        android:text="longueur : 60cm" />
+
+                    <TextView
+                        android:id="@+id/width_type_M"
+                        android:layout_column="1"
+                        android:layout_row="3"
+                        android:text="largeur : 40cm" />
+
+                    <TextView
+                        android:id="@+id/heigth_type_M"
+                        android:layout_column="1"
+                        android:layout_row="4"
+                        android:text="hauteur : 30cm" />
+                </GridLayout>
+                <GridLayout
+                    android:id="@+id/grid_type_L"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:layout_row="1">
+
+                    <RadioButton
+                        android:id="@+id/type_L"
+                        android:layout_column="0"
+                        android:layout_row="0"
+                        android:onClick="onRadioButtonClicked"/>
+                    <TextView
+                        android:id="@+id/name_type_L"
+                        android:layout_column="1"
+                        android:layout_row="0"
+                        android:text="Type L" />
+
+                    <TextView
+                        android:id="@+id/wiegth_type_L"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_row="1"
+                        android:text="Poids : 60kg" />
+
+                    <TextView
+                        android:id="@+id/length_type_L"
+                        android:layout_column="1"
+                        android:layout_row="2"
+                        android:text="longueur : 60cm" />
+
+                    <TextView
+                        android:id="@+id/width_type_L"
+                        android:layout_column="1"
+                        android:layout_row="3"
+                        android:text="largeur : 40cm" />
+
+                    <TextView
+                        android:id="@+id/heigth_type_L"
+                        android:layout_column="1"
+                        android:layout_row="4"
+                        android:text="hauteur : 60cm" />
+                </GridLayout>
+                <GridLayout
+                    android:id="@+id/grid_type_XL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_row="1">
+
+                    <RadioButton
+                        android:id="@+id/type_XL"
+                        android:layout_column="0"
+                        android:layout_row="0"
+                        android:onClick="onRadioButtonClicked"/>
+
+                    <TextView
+                        android:id="@+id/name_type_XL"
+                        android:layout_column="1"
+                        android:layout_row="0"
+                        android:text="Type XL" />
+
+                    <TextView
+                        android:id="@+id/wiegth_type_XL"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_row="1"
+                        android:text="Poids : 100kg" />
+
+                    <TextView
+                        android:id="@+id/length_type_XL"
+                        android:layout_column="1"
+                        android:layout_row="2"
+                        android:text="longueur : 60cm" />
+
+                    <TextView
+                        android:id="@+id/width_type_XL"
+                        android:layout_column="1"
+                        android:layout_row="3"
+                        android:text="largeur : 80cm" />
+
+                    <TextView
+                        android:id="@+id/heigth_type_XL"
+                        android:layout_column="1"
+                        android:layout_row="4"
+                        android:text="hauteur : 60cm" />
+                </GridLayout>
+            </GridLayout>
+        </worker8.com.github.radiogroupplus.RadioGroupPlus>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Select the delivery type: "/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/normal_delivery"
+                android:text="Normal delivery"
+                android:onClick="onRadioButtonClicked"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/semi_express_delivery"
+                android:text="Semi-express delivery"
+                android:onClick="onRadioButtonClicked"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/express_delivery"
+                android:text="Express delivery"
+                android:onClick="onRadioButtonClicked"/>
+        </RadioGroup>
+    </LinearLayout>
+</LinearLayout>

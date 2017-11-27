@@ -17,6 +17,7 @@ import com.coursierwallon.bryan.coursierwallonandroidapp.Model.OrderModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
 import com.google.gson.Gson;
 
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,7 +32,7 @@ public class DateTimePickerActivity extends AppCompatActivity {
     private TextView pickUpDateText, pickUpStarTimeText, pickUpEndTimeText;
     private TextView depositDateText, depositStartTimeText, depositEndTimeText;
     private Date pickUpDate, depositDate;
-    private String pickUpStartTime, pickUpEndTime, depositStartTime, depositEndTime;
+    private Time pickUpStartTime, pickUpEndTime, depositStartTime, depositEndTime;
 
     public int getClickedButtonId() {
         return clickedButtonId;
@@ -77,35 +78,35 @@ public class DateTimePickerActivity extends AppCompatActivity {
         this.depositDate = depositDate;
     }
 
-    public String getPickUpStartTime() {
+    public Time getPickUpStartTime() {
         return pickUpStartTime;
     }
 
-    public void setPickUpStartTime(String pickUpStartTime) {
+    public void setPickUpStartTime(Time pickUpStartTime) {
         this.pickUpStartTime = pickUpStartTime;
     }
 
-    public String getPickUpEndTime() {
+    public Time getPickUpEndTime() {
         return pickUpEndTime;
     }
 
-    public void setPickUpEndTime(String pickUpEndTime) {
+    public void setPickUpEndTime(Time pickUpEndTime) {
         this.pickUpEndTime = pickUpEndTime;
     }
 
-    public String getDepositStartTime() {
+    public Time getDepositStartTime() {
         return depositStartTime;
     }
 
-    public void setDepositStartTime(String depositStartTime) {
+    public void setDepositStartTime(Time depositStartTime) {
         this.depositStartTime = depositStartTime;
     }
 
-    public String getDepositEndTime() {
+    public Time getDepositEndTime() {
         return depositEndTime;
     }
 
-    public void setDepositEndTime(String depositEndTime) {
+    public void setDepositEndTime(Time depositEndTime) {
         this.depositEndTime = depositEndTime;
     }
 
@@ -161,7 +162,7 @@ public class DateTimePickerActivity extends AppCompatActivity {
                 newOrder.setPickUpEndTime(pickUpEndTime);
                 newOrder.setDepositeStartTime(depositStartTime);
                 newOrder.setDepositeEndTime(depositEndTime);
-                Intent intentToParcelPicker = new Intent(); //TODO : parcelPicker.java, and the layout
+                Intent intentToParcelPicker = new Intent(this, ParcelTypePicker.class);
                 intentToParcelPicker.putExtra("newOrder", gson.toJson(newOrder));
                 startActivity(intentToParcelPicker);
                 return true;
@@ -192,17 +193,17 @@ public class DateTimePickerActivity extends AppCompatActivity {
         int minute = 00;
         String text = hour + "h" +((minute < 10)? "0" + minute : minute);
         pickUpStarTimeText.setText(text);
-        pickUpStartTime = text;
+        pickUpStartTime = convertStringToTime(text);
         hour += 3;
         text = hour + "h" +((minute < 10)? "0" + minute : minute);
         pickUpEndTimeText.setText(text);
         depositEndTimeText.setText(text);
-        pickUpEndTime = text;
-        depositStartTime = text;
+        pickUpEndTime = convertStringToTime(text);
+        depositStartTime = convertStringToTime(text);
         hour += 2;
         text = hour + "h" +((minute < 10)? "0" + minute : minute);
         depositEndTimeText.setText(text);
-        depositEndTime = text;
+        depositEndTime = convertStringToTime(text);
     }
 
     public void showTimePickerDialog(View v) {
@@ -226,5 +227,16 @@ public class DateTimePickerActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return date;
+    }
+
+    public Time convertStringToTime(String text){
+        SimpleDateFormat sdf = new SimpleDateFormat("HH'h'mm");
+        Time time = new Time(Calendar.getInstance().getTimeInMillis());
+        try{
+            time.setTime(sdf.parse(text).getTime());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return time;
     }
 }

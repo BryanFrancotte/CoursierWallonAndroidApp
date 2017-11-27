@@ -12,12 +12,12 @@ public class OrderModel {
     private long orderNumber;
     private String state;
     private Date pickUpDate;
-    private String pickUpStartTime;
-    private String pickUpEndTime;
+    private Time pickUpStartTime;
+    private Time pickUpEndTime;
     private Date depositDate;
-    private String depositeStartTime;
-    private String depositeEndTime;
-    private String deliveryType;
+    private Time depositeStartTime;
+    private Time depositeEndTime;
+    private int deliveryType;
     private long userIdOrder;
     private long pickUpAddress;
     private long depositAddress;
@@ -32,7 +32,7 @@ public class OrderModel {
         this.userIdOrder = userIdOrder;
     }
 
-    public OrderModel(long orderNumber, String state, Date pickUpDate, String pickUpStartTime, String pickUpEndTime, Date depositDate, String depositeStartTime, String depositeEndTime, String deliveryType, long userIdOrder, long pickUpAddress, long depositAddress, long billingAddress, AddressModel billingAddressNavigation, AddressModel depositAddressNavigation, AddressModel pickUpAddressNavigation, UserModel userIdOrderNavigation) {
+    public OrderModel(long orderNumber, String state, Date pickUpDate, Time pickUpStartTime, Time pickUpEndTime, Date depositDate, Time depositeStartTime, Time depositeEndTime, int deliveryType, long userIdOrder, long pickUpAddress, long depositAddress, long billingAddress, AddressModel billingAddressNavigation, AddressModel depositAddressNavigation, AddressModel pickUpAddressNavigation, UserModel userIdOrderNavigation) {
         this.orderNumber = orderNumber;
         this.state = state;
         this.pickUpDate = pickUpDate;
@@ -76,19 +76,19 @@ public class OrderModel {
         this.pickUpDate = pickUpDate;
     }
 
-    public String getPickUpStartTime() {
+    public Time getPickUpStartTime() {
         return pickUpStartTime;
     }
 
-    public void setPickUpStartTime(String pickUpStartTime) {
+    public void setPickUpStartTime(Time pickUpStartTime) {
         this.pickUpStartTime = pickUpStartTime;
     }
 
-    public String getPickUpEndTime() {
+    public Time getPickUpEndTime() {
         return pickUpEndTime;
     }
 
-    public void setPickUpEndTime(String pickUpEndTime) {
+    public void setPickUpEndTime(Time pickUpEndTime) {
         this.pickUpEndTime = pickUpEndTime;
     }
 
@@ -100,27 +100,27 @@ public class OrderModel {
         this.depositDate = depositDate;
     }
 
-    public String getDepositeStartTime() {
+    public Time getDepositeStartTime() {
         return depositeStartTime;
     }
 
-    public void setDepositeStartTime(String depositeStartTime) {
+    public void setDepositeStartTime(Time depositeStartTime) {
         this.depositeStartTime = depositeStartTime;
     }
 
-    public String getDepositeEndTime() {
+    public Time getDepositeEndTime() {
         return depositeEndTime;
     }
 
-    public void setDepositeEndTime(String depositeEndTime) {
+    public void setDepositeEndTime(Time depositeEndTime) {
         this.depositeEndTime = depositeEndTime;
     }
 
-    public String getDeliveryType() {
+    public int getDeliveryType() {
         return deliveryType;
     }
 
-    public void setDeliveryType(String deliveryType) {
+    public void setDeliveryType(int deliveryType) {
         this.deliveryType = deliveryType;
     }
 

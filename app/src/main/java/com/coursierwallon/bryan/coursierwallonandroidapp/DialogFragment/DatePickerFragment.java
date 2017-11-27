@@ -34,8 +34,8 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         // Do something with the date chosen by the user
         month++;
         String text = day + "/" + month + "/" + year;
-        Date selectedDate = convertStringToDate(text);
         DateTimePickerActivity activity = (DateTimePickerActivity) this.getActivity();
+        Date selectedDate = activity.convertStringToDate(text);
         setAction(text, selectedDate, activity);
     }
 
@@ -58,16 +58,5 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
                 }
                 break;
         }
-    }
-
-    public Date convertStringToDate(String text){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = Calendar.getInstance().getTime();
-        try {
-            date = sdf.parse(text);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return date;
     }
 }
