@@ -67,11 +67,11 @@ public class ParcelTypePicker extends AppCompatActivity {
                 Bundle bundle = getIntent().getExtras();
                 OrderModel newOrder = gson.fromJson(bundle.getString("newOrder"), OrderModel.class);
                 newOrder.setDeliveryType(deliveryType);
-                ParcelModel newParcel = new ParcelModel(parcelType, newOrder);
-                Toast.makeText(this, gson.toJson(newParcel), Toast.LENGTH_LONG).show();
-                Intent intentToParcelPicker = new Intent(); //TODO : OrderConfirmation.java, and the layout
-                intentToParcelPicker.putExtra("newParcel", gson.toJson(newParcel));
-                //startActivity(intentToParcelPicker);
+                newOrder.addPacel(new ParcelModel(parcelType));
+                Toast.makeText(this, gson.toJson(newOrder), Toast.LENGTH_LONG).show();
+                Intent intentToConfirmationOrder = new Intent(this, OrderConfirmationActivity.class);
+                intentToConfirmationOrder.putExtra("newOrder", gson.toJson(newOrder));
+                //startActivity(intentToConfirmationOrder);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

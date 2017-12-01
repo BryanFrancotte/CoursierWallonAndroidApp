@@ -11,6 +11,10 @@ public class ParcelModel {
     private long orderNumberParcel;
     private OrderModel orderNumberParcelNavigation;
 
+    public ParcelModel(int parcelType) {
+        this.parcelType = parcelType;
+    }
+
     public ParcelModel(int parcelType, OrderModel order) {
         this.parcelType = parcelType;
         orderNumberParcelNavigation = order;

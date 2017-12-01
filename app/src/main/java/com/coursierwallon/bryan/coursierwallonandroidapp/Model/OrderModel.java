@@ -1,6 +1,7 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.Model;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -26,6 +27,7 @@ public class OrderModel {
     private AddressModel depositAddressNavigation;
     private AddressModel pickUpAddressNavigation;
     private UserModel userIdOrderNavigation;
+    private ArrayList<ParcelModel> parcel;
 
     public OrderModel(String state, long userIdOrder) {
         this.state = state;
@@ -186,5 +188,17 @@ public class OrderModel {
 
     public void setUserIdOrderNavigation(UserModel userIdOrderNavigation) {
         this.userIdOrderNavigation = userIdOrderNavigation;
+    }
+
+    public ArrayList<ParcelModel> getParcel() {
+        return parcel;
+    }
+
+    public ParcelModel getParcel(int index){
+        return parcel.get(index);
+    }
+
+    public void addPacel(ParcelModel newParcel) {
+        this.parcel.add(newParcel);
     }
 }

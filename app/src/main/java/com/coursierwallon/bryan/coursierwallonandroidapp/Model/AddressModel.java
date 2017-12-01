@@ -70,7 +70,7 @@ public class AddressModel {
     }
 
     public String toString(){
-        return this.street + ", " + this.houseNumber + ((this.boxNumber != null)?(" (" +this.boxNumber + ")\n"):"\n")
+        return this.street + ", " + this.houseNumber + ((this.boxNumber != null)?(" (" +this.boxNumber + "), "):", ")
                 + this.localityIdAddressNavigation.getName() + ", " + this.localityIdAddressNavigation.getPostalCode();
     }
 }

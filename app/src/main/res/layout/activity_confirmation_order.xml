@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/toolbar_custom"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="23dp"
+        android:background="@android:color/white">
+
+        <TextView
+            android:id="@+id/confirmationOrder_layout_parcelType_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Parcel :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/confirmationOrder_layout_parcelType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/confirmationOrder_layout_pickUpAddress_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Pick up address :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/confirmationOrder_layout_pickUpAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/confirmationOrder_layout_destAddress_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Deposit address :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/confirmationOrder_layout_destAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/confirmationOrder_layout_deliveryType_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Delivery type :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/confirmationOrder_layout_deliveryType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/confirmationOrder_layout_estimatedPrice_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Estimated price :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/confirmationOrder_layout_estimatedPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="0€" />
+    </LinearLayout>
+
+</LinearLayout>
