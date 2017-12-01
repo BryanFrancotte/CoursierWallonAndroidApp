@@ -9,4 +9,7 @@ public class ApiConstant {
 
     public final static String URL_GetAllPickUpAddressByUser = "Address/GetAllPickUpByUser/";
     public final static String URL_GetAllDepositAddressByUser = "Address/GetAllDepositByUser/";
+    public final static String URL_addressExists = "Address/addressExists";
+
+    public final static String URL_AddOrder = "Order/Add";
 }

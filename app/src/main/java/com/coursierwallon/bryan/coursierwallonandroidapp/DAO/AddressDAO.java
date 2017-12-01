@@ -17,11 +17,11 @@ import java.util.ArrayList;
  */
 //TODO rethink about those damn methods :/
 public class AddressDAO {
-    public ArrayList<AddressModel> getAllPickUpAddressByUser(long userId) throws Exception{
+    public ArrayList<AddressModel> getAllPickUpAddressByUser(String userId) throws Exception{
         ArrayList<AddressModel> addresses = new ArrayList<>();
         Gson gson = new Gson();
 
-        URL url = new URL(ApiConstant.URL_BASE + ApiConstant.URL_GetAllPickUpAddressByUser + Long.toString(userId));
+        URL url = new URL(ApiConstant.URL_BASE + ApiConstant.URL_GetAllPickUpAddressByUser + userId);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         connection.setDoInput(true);
@@ -44,11 +44,11 @@ public class AddressDAO {
         return addresses;
     }
 
-    public ArrayList<AddressModel> getAllDepositAddressByUser(long userId) throws Exception{
+    public ArrayList<AddressModel> getAllDepositAddressByUser(String userId) throws Exception{
         ArrayList<AddressModel> addresses = new ArrayList<>();
         Gson gson = new Gson();
 
-        URL url = new URL(ApiConstant.URL_BASE + ApiConstant.URL_GetAllDepositAddressByUser + Long.toString(userId));
+        URL url = new URL(ApiConstant.URL_BASE + ApiConstant.URL_GetAllDepositAddressByUser +userId);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         connection.setDoInput(true);
@@ -69,5 +69,11 @@ public class AddressDAO {
             addresses.add(gson.fromJson(jsonArray.getJSONObject(i).toString(), AddressModel.class));
         }
         return addresses;
+    }
+
+    public AddressModel addressExistInDB(String address){
+        URL url = new URL(ApiConstant.URL_BASE + ApiConstant.URL_addressExists);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        //TODO:Continue...
     }
 }

@@ -19,7 +19,7 @@ public class OrderModel {
     private Time depositeStartTime;
     private Time depositeEndTime;
     private int deliveryType;
-    private long userIdOrder;
+    private String userIdOrder;
     private long pickUpAddress;
     private long depositAddress;
     private long billingAddress;
@@ -29,12 +29,12 @@ public class OrderModel {
     private UserModel userIdOrderNavigation;
     private ArrayList<ParcelModel> parcel;
 
-    public OrderModel(String state, long userIdOrder) {
+    public OrderModel(String state, String userIdOrder) {
         this.state = state;
         this.userIdOrder = userIdOrder;
     }
 
-    public OrderModel(long orderNumber, String state, Date pickUpDate, Time pickUpStartTime, Time pickUpEndTime, Date depositDate, Time depositeStartTime, Time depositeEndTime, int deliveryType, long userIdOrder, long pickUpAddress, long depositAddress, long billingAddress, AddressModel billingAddressNavigation, AddressModel depositAddressNavigation, AddressModel pickUpAddressNavigation, UserModel userIdOrderNavigation) {
+    public OrderModel(long orderNumber, String state, Date pickUpDate, Time pickUpStartTime, Time pickUpEndTime, Date depositDate, Time depositeStartTime, Time depositeEndTime, int deliveryType, String userIdOrder, long pickUpAddress, long depositAddress, long billingAddress, AddressModel billingAddressNavigation, AddressModel depositAddressNavigation, AddressModel pickUpAddressNavigation, UserModel userIdOrderNavigation) {
         this.orderNumber = orderNumber;
         this.state = state;
         this.pickUpDate = pickUpDate;
@@ -126,11 +126,11 @@ public class OrderModel {
         this.deliveryType = deliveryType;
     }
 
-    public long getUserIdOrder() {
+    public String getUserIdOrder() {
         return userIdOrder;
     }
 
-    public void setUserIdOrder(long userIdOrder) {
+    public void setUserIdOrder(String userIdOrder) {
         this.userIdOrder = userIdOrder;
     }
 

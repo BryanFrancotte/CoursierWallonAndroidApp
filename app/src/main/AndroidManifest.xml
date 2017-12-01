@@ -97,6 +97,13 @@
             android:parentActivityName=".View.DateTimePickerActivity">
 
         </activity>
+        <activity android:name=".View.OrderConfirmationActivity"
+            android:label="Confirmation"
+            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"
+            android:parentActivityName=".View.ParcelTypePicker">
+
+        </activity>
+
     </application>
 
 </manifest>

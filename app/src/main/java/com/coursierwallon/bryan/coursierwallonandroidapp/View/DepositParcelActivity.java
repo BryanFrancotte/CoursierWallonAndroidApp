@@ -31,7 +31,7 @@ public class DepositParcelActivity extends AddressPicker{
     }
 
     @Override
-    public ArrayList<AddressModel> getAddressMethod(long userId) throws Exception {
+    public ArrayList<AddressModel> getAddressMethod(String userId) throws Exception {
         AddressDAO dao = new AddressDAO();
         return dao.getAllDepositAddressByUser(userId);
     }

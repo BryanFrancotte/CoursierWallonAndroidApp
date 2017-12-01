@@ -70,7 +70,7 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
         mapFragment.getMapAsync(this);
 
         addressList = findViewById(R.id.list_address);
-        new GetAllPickupAddressByUser().execute(DevConstant.USER_MJ);
+        new GetAllPickupAddressByUser().execute(DevConstant.USER_BRYAN);
     }
 
     @Override
@@ -152,15 +152,15 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
 
     public abstract void actionOnNextButton();
 
-    public abstract ArrayList<AddressModel> getAddressMethod(long userId) throws Exception;
+    public abstract ArrayList<AddressModel> getAddressMethod(String userId) throws Exception;
 
-    private class GetAllPickupAddressByUser extends AsyncTask<Long, Void, ArrayList<AddressModel>> {
+    private class GetAllPickupAddressByUser extends AsyncTask<String, Void, ArrayList<AddressModel>> {
 
         @Override
-        protected ArrayList<AddressModel> doInBackground(Long... longs) {
+        protected ArrayList<AddressModel> doInBackground(String... userIds) {
             ArrayList<AddressModel> addressList = null;
             try {
-                addressList = getAddressMethod(longs[0]);
+                addressList = getAddressMethod(userIds[0]);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -169,8 +169,10 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
 
         @Override
         protected void onPostExecute(ArrayList<AddressModel> addresses){
-            ArrayAdapter<AddressModel> adapter = new AddressArrayAdapter(AddressPicker.this,R.layout.list_view_address, addresses);
-            addressList.setAdapter(adapter);
+            if(addresses != null) {
+                ArrayAdapter<AddressModel> adapter = new AddressArrayAdapter(AddressPicker.this, R.layout.list_view_address, addresses);
+                addressList.setAdapter(adapter);
+            }
             findViewById(R.id.loadingPanel).setVisibility(View.GONE);
             addressList.setVisibility(View.VISIBLE);
         }

@@ -20,7 +20,7 @@ public class PickupParcelActivity extends AddressPicker{
     @Override
     public void actionOnNextButton() {
         Gson gson = new Gson();
-        OrderModel newOrder = new OrderModel(OrderConstant.STATE, DevConstant.USER_MJ);
+        OrderModel newOrder = new OrderModel(OrderConstant.STATE, DevConstant.USER_BRYAN);
         AddressModel PickUpAddress = (AddressModel) getAddressList().getItemAtPosition(getCurrentSelectedItem());
         newOrder.setPickUpDate(OrderConstant.getDate());
         newOrder.setBillingAddress(PickUpAddress.getAddressId());
@@ -32,7 +32,7 @@ public class PickupParcelActivity extends AddressPicker{
     }
 
     @Override
-    public ArrayList<AddressModel> getAddressMethod(long userId) throws Exception {
+    public ArrayList<AddressModel> getAddressMethod(String userId) throws Exception {
         AddressDAO dao = new AddressDAO();
         return dao.getAllPickUpAddressByUser(userId);
     }

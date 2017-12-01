@@ -5,6 +5,6 @@ package com.coursierwallon.bryan.coursierwallonandroidapp.Constant;
  */
 
 public class DevConstant {
-    public final static long USER_BRYAN = 1;
+    public final static String USER_BRYAN = "9ce5fdc8-01c4-4179-93c7-4508706c0690";
     public final static long USER_MJ = 2;
 }
