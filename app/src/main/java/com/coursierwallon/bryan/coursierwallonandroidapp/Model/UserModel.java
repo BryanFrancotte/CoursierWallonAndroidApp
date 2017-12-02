@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by franc on 11-11-17.
  */
 
-public class User {
+public class UserModel {
     private long userId;
     private String firstName;
     private String lastName;
@@ -16,7 +16,7 @@ public class User {
     private long codeRoleUser;
     private long addressIdUser;
 
-    public User(long userId, String firstName, String lastName, String email, String password, Date birthDate, long codeRoleUser, long addressIdUser){
+    public UserModel(long userId, String firstName, String lastName, String email, String password, Date birthDate, long codeRoleUser, long addressIdUser){
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;

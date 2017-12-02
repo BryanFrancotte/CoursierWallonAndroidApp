@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="pickUp Time"-->
+        <!--android:onClick="showTimePickerDialog" />-->
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="deposit Time"-->
+        <!--android:onClick="showDatePickerDialog" />-->
+    <include
+        layout="@layout/toolbar_custom"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="50dp">
+
+        <TextView
+            android:layout_column="0"
+            android:layout_row="0"
+            android:text="Pick up date and time"/>
+
+        <LinearLayout
+            android:layout_column="0"
+            android:layout_row="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/coursierColorPrimaryDark"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/date_time_layout_pickupdate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingEnd="10dp"
+                android:text="10/12/2017"
+                android:textColor="@android:color/white"/>
+
+            <ImageButton
+                android:id="@+id/date_time_layout_pickupdate_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/edit_logo"
+                android:onClick="showDatePickerDialog"
+                android:background="@color/coursierColorPrimaryDark"/>
+
+            <TextView
+                android:id="@+id/date_time_layout_pickupTimeStart"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingEnd="10dp"
+                android:text="10h00"
+                android:textColor="@android:color/white"/>
+
+            <ImageButton
+                android:id="@+id/date_time_layout_pickupTimeStart_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/edit_logo"
+                android:onClick="showTimePickerDialog"
+                android:background="@color/coursierColorPrimaryDark"/>
+
+            <TextView
+                android:id="@+id/date_time_layout_pickupTimeEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingEnd="10dp"
+                android:text="18h00"
+                android:textColor="@android:color/white"/>
+
+            <ImageButton
+                android:id="@+id/date_time_layout_pickupTimeEnd_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/edit_logo"
+                android:onClick="showTimePickerDialog"
+                android:background="@color/coursierColorPrimaryDark"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_column="0"
+            android:layout_row="2"
+            android:layout_marginTop="30dp"
+            android:text="Deposit date and time"/>
+
+        <LinearLayout
+            android:layout_column="0"
+            android:layout_row="3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/coursierColorPrimaryDark"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/date_time_layout_depositdate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingEnd="10dp"
+                android:text="10/12/2017"
+                android:textColor="@android:color/white" />
+
+            <ImageButton
+                android:id="@+id/date_time_layout_depositdate_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/edit_logo"
+                android:onClick="showDatePickerDialog"
+                android:background="@color/coursierColorPrimaryDark"/>
+
+            <TextView
+                android:id="@+id/date_time_layout_depositTimeStart"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingEnd="10dp"
+                android:text="10h00"
+                android:textColor="@android:color/white" />
+
+            <ImageButton
+                android:id="@+id/date_time_layout_depositTimeStart_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/edit_logo"
+                android:onClick="showTimePickerDialog"
+                android:background="@color/coursierColorPrimaryDark"/>
+
+            <TextView
+                android:id="@+id/date_time_layout_depositTimeEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingEnd="10dp"
+                android:text="18h00"
+                android:textColor="@android:color/white"/>
+
+            <ImageButton
+                android:id="@+id/date_time_layout_depositTimeEnd_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/edit_logo"
+                android:onClick="showTimePickerDialog"
+                android:background="@color/coursierColorPrimaryDark"/>
+
+        </LinearLayout>
+    </GridLayout>
+
+
+</LinearLayout>

@@ -1,7 +1,9 @@
 <resources>
     
-    <string name="title_activity_maps">Map</string>
-
+    <string name="title_activity_maps">Pick Up Address</string>
+    <string name="title_activity_deposit">Destination address</string>
+    <string name="coursier_map_marker_name">Coursier Wallon</string>
+    <string name="coursier_map_marker_snippet">Coursier wallon Namur\'s office</string>
     <string name="coursier_img_description">Coursier wallon\'s logo</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
@@ -26,6 +28,7 @@
     <string name="logout_label">logout</string>
     <string name="my_profile_label">My profile</string>
     <string name="settings_label">Settings</string>
+    <string name="error_empty_address">Address not selected!</string>
 
     <string name="empty_input_error">The email and the password can not be empty!</string>
     <string name="app_name">CoursierWallon</string>

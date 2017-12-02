@@ -58,12 +58,12 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
     }
-    private class UserConnexion extends AsyncTask<UserTemp, Void, User> {
+    private class UserConnexion extends AsyncTask<UserTemp, Void, UserModel> {
 
         @Override
-        protected User doInBackground(UserTemp... userTemps) {
+        protected UserModel doInBackground(UserTemp... userTemps) {
             UserDAO userDAO = new UserDAO();
-            User user;
+            UserModel user;
             try {
                 user = userDAO.connexion(userTemps[0]);
                 Log.i("Contenu inputJsonString",  user.toString());
@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity{
         }
 
         @Override
-        protected void onPostExecute(User user){
+        protected void onPostExecute(UserModel user){
             if(user != null){
                 Toast.makeText(LoginActivity.this,"Welcome" + user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_SHORT).show();
             }else{

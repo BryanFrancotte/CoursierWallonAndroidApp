@@ -2,6 +2,8 @@
 <resources>
     <string name="app_name">Coursier Wallon</string>
 
+    <string name="coursier_map_marker_name">Coursier Wallon</string>
+    <string name="coursier_map_marker_snippet">QG du coursier wallon Namur</string>
     <string name="birthday_hint">Date de naissance</string>
     <string name="box_number_hint">Boite N°</string>
     <string name="confirm_password_hint">Confirmer le mot de passe</string>
@@ -27,4 +29,7 @@
     <string name="street_hint">Rue</string>
     <string name="text_separator">Ou</string>
     <string name="address_hint">adresse</string>
+    <string name="title_activity_maps">Adresse de retrait</string>
+    <string name="title_activity_deposit">Adresse de destination</string>
+    <string name="error_empty_address">Aucune adresse selectionnée</string>
 </resources>

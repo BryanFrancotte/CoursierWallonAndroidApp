@@ -34,9 +34,10 @@
         </activity>
         <!--*************************************************************************************-->
         <activity
-            android:name=".View.pickupParcelActivity"
+            android:name=".View.PickupParcelActivity"
             android:label="@string/title_activity_maps"
-            android:theme="@style/CoursierTheme.RedBackgroud">
+            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"
+            android:parentActivityName=".View.HomeActivity">
 
         </activity>
         <activity
@@ -76,6 +77,33 @@
             android:theme="@style/CoursierTheme.NoToolbar">
 
         </activity>
+        <activity
+            android:name=".View.DepositParcelActivity"
+            android:label="@string/title_activity_deposit"
+            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"
+            android:parentActivityName=".View.PickupParcelActivity">
+
+        </activity>
+        <activity
+            android:name=".View.DateTimePickerActivity"
+            android:label="date And Time"
+            android:theme="@style/CoursierTheme.NoToolbar"
+            android:parentActivityName=".View.DepositParcelActivity">
+
+        </activity>
+        <activity android:name=".View.ParcelTypePicker"
+            android:label="type"
+            android:theme="@style/CoursierTheme.NoToolbar"
+            android:parentActivityName=".View.DateTimePickerActivity">
+
+        </activity>
+        <activity android:name=".View.OrderConfirmationActivity"
+            android:label="Confirmation"
+            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"
+            android:parentActivityName=".View.ParcelTypePicker">
+
+        </activity>
+
     </application>
 
 </manifest>
