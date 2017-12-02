@@ -1,8 +1,8 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.Model;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by franc on 21-11-17.
@@ -10,56 +10,32 @@ import java.util.Date;
 
 public class OrderModel {
 
-    private long orderNumber;
+    private Long orderNumber;
     private String state;
     private Date pickUpDate;
-    private Time pickUpStartTime;
-    private Time pickUpEndTime;
+    private String pickUpStartTime;
+    private String pickUpEndTime;
     private Date depositDate;
-    private Time depositeStartTime;
-    private Time depositeEndTime;
+    private String depositStartTime;
+    private String depositEndTime;
     private int deliveryType;
     private String userIdOrder;
-    private long pickUpAddress;
-    private long depositAddress;
-    private long billingAddress;
+    private Long billingAddress;
+    private Long pickUpAddress;
+    private Long depositAddress;
     private AddressModel billingAddressNavigation;
     private AddressModel depositAddressNavigation;
     private AddressModel pickUpAddressNavigation;
-    private UserModel userIdOrderNavigation;
-    private ArrayList<ParcelModel> parcel;
+    private ArrayList<ParcelModel> parcel = new ArrayList<>();
 
     public OrderModel(String state, String userIdOrder) {
+        this.orderNumber = null;
         this.state = state;
         this.userIdOrder = userIdOrder;
-    }
+        this.billingAddress = null;
+        this.pickUpAddress = null;
+        this.depositAddress = null;
 
-    public OrderModel(long orderNumber, String state, Date pickUpDate, Time pickUpStartTime, Time pickUpEndTime, Date depositDate, Time depositeStartTime, Time depositeEndTime, int deliveryType, String userIdOrder, long pickUpAddress, long depositAddress, long billingAddress, AddressModel billingAddressNavigation, AddressModel depositAddressNavigation, AddressModel pickUpAddressNavigation, UserModel userIdOrderNavigation) {
-        this.orderNumber = orderNumber;
-        this.state = state;
-        this.pickUpDate = pickUpDate;
-        this.pickUpStartTime = pickUpStartTime;
-        this.pickUpEndTime = pickUpEndTime;
-        this.depositDate = depositDate;
-        this.depositeStartTime = depositeStartTime;
-        this.depositeEndTime = depositeEndTime;
-        this.deliveryType = deliveryType;
-        this.userIdOrder = userIdOrder;
-        this.pickUpAddress = pickUpAddress;
-        this.depositAddress = depositAddress;
-        this.billingAddress = billingAddress;
-        this.billingAddressNavigation = billingAddressNavigation;
-        this.depositAddressNavigation = depositAddressNavigation;
-        this.pickUpAddressNavigation = pickUpAddressNavigation;
-        this.userIdOrderNavigation = userIdOrderNavigation;
-    }
-
-    public long getOrderNumber() {
-        return orderNumber;
-    }
-
-    public void setOrderNumber(long orderNumber) {
-        this.orderNumber = orderNumber;
     }
 
     public String getState() {
@@ -78,19 +54,19 @@ public class OrderModel {
         this.pickUpDate = pickUpDate;
     }
 
-    public Time getPickUpStartTime() {
+    public String getPickUpStartTime() {
         return pickUpStartTime;
     }
 
-    public void setPickUpStartTime(Time pickUpStartTime) {
+    public void setPickUpStartTime(String pickUpStartTime) {
         this.pickUpStartTime = pickUpStartTime;
     }
 
-    public Time getPickUpEndTime() {
+    public String getPickUpEndTime() {
         return pickUpEndTime;
     }
 
-    public void setPickUpEndTime(Time pickUpEndTime) {
+    public void setPickUpEndTime(String pickUpEndTime) {
         this.pickUpEndTime = pickUpEndTime;
     }
 
@@ -102,20 +78,20 @@ public class OrderModel {
         this.depositDate = depositDate;
     }
 
-    public Time getDepositeStartTime() {
-        return depositeStartTime;
+    public String getDepositStartTime() {
+        return depositStartTime;
     }
 
-    public void setDepositeStartTime(Time depositeStartTime) {
-        this.depositeStartTime = depositeStartTime;
+    public void setDepositStartTime(String depositStartTime) {
+        this.depositStartTime = depositStartTime;
     }
 
-    public Time getDepositeEndTime() {
-        return depositeEndTime;
+    public String getDepositEndTime() {
+        return depositEndTime;
     }
 
-    public void setDepositeEndTime(Time depositeEndTime) {
-        this.depositeEndTime = depositeEndTime;
+    public void setDepositEndTime(String depositEndTime) {
+        this.depositEndTime = depositEndTime;
     }
 
     public int getDeliveryType() {
@@ -134,27 +110,11 @@ public class OrderModel {
         this.userIdOrder = userIdOrder;
     }
 
-    public long getPickUpAddress() {
-        return pickUpAddress;
-    }
-
-    public void setPickUpAddress(long pickUpAddress) {
-        this.pickUpAddress = pickUpAddress;
-    }
-
-    public long getDepositAddress() {
-        return depositAddress;
-    }
-
-    public void setDepositAddress(long depositAddress) {
-        this.depositAddress = depositAddress;
-    }
-
-    public long getBillingAddress() {
+    public Long getBillingAddress() {
         return billingAddress;
     }
 
-    public void setBillingAddress(long billingAddress) {
+    public void setBillingAddress(Long billingAddress) {
         this.billingAddress = billingAddress;
     }
 
@@ -166,6 +126,14 @@ public class OrderModel {
         this.billingAddressNavigation = billingAddressNavigation;
     }
 
+    public Long getDepositAddress() {
+        return depositAddress;
+    }
+
+    public void setDepositAddress(Long depositAddress) {
+        this.depositAddress = depositAddress;
+    }
+
     public AddressModel getDepositAddressNavigation() {
         return depositAddressNavigation;
     }
@@ -174,20 +142,20 @@ public class OrderModel {
         this.depositAddressNavigation = depositAddressNavigation;
     }
 
+    public Long getPickUpAddress() {
+        return pickUpAddress;
+    }
+
+    public void setPickUpAddress(Long pickUpAddress) {
+        this.pickUpAddress = pickUpAddress;
+    }
+
     public AddressModel getPickUpAddressNavigation() {
         return pickUpAddressNavigation;
     }
 
     public void setPickUpAddressNavigation(AddressModel pickUpAddressNavigation) {
         this.pickUpAddressNavigation = pickUpAddressNavigation;
-    }
-
-    public UserModel getUserIdOrderNavigation() {
-        return userIdOrderNavigation;
-    }
-
-    public void setUserIdOrderNavigation(UserModel userIdOrderNavigation) {
-        this.userIdOrderNavigation = userIdOrderNavigation;
     }
 
     public ArrayList<ParcelModel> getParcel() {

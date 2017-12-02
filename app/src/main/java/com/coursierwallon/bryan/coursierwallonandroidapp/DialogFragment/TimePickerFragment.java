@@ -35,10 +35,10 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         String text = hourOfDay + "h" +((minute < 10)? "0" + minute : minute);
         DateTimePickerActivity activity = (DateTimePickerActivity) this.getActivity();
         Time time = activity.convertStringToTime(text);
-        setAction(text, activity, time);
+        setAction(text, activity, time.toString());
     }
 
-    public void setAction(String text, DateTimePickerActivity activity, Time time){
+    public void setAction(String text, DateTimePickerActivity activity, String time){
         switch (activity.getClickedButtonId()){
             case R.id.date_time_layout_pickupTimeStart_button:
                 activity.getPickUpStarTimeText().setText(text);

@@ -6,25 +6,24 @@ package com.coursierwallon.bryan.coursierwallonandroidapp.Model;
 
 public class ParcelModel {
 
-    private long parcelId;
+    private Long parcelId;
     private int parcelType;
-    private long orderNumberParcel;
+    private Long orderNumberParcel;
     private OrderModel orderNumberParcelNavigation;
 
-    public ParcelModel(int parcelType) {
-        this.parcelType = parcelType;
-    }
-
-    public ParcelModel(int parcelType, OrderModel order) {
-        this.parcelType = parcelType;
-        orderNumberParcelNavigation = order;
-    }
-
-    public ParcelModel(long parcelId, int parcelType, long orderNumberParcel, OrderModel orderNumberParcelNavigation) {
+    public ParcelModel(Long parcelId, int parcelType, Long orderNumberParcel, OrderModel orderNumberParcelNavigation) {
         this.parcelId = parcelId;
         this.parcelType = parcelType;
         this.orderNumberParcel = orderNumberParcel;
         this.orderNumberParcelNavigation = orderNumberParcelNavigation;
+    }
+
+    public ParcelModel(int parcelType, OrderModel order) {
+        this(null, parcelType, null, order);
+    }
+
+    public ParcelModel(int parcelType) {
+        this(parcelType, null);
     }
 
     public long getParcelId() {

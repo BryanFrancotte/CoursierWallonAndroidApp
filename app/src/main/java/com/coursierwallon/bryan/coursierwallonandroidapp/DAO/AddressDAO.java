@@ -70,10 +70,4 @@ public class AddressDAO {
         }
         return addresses;
     }
-
-    public AddressModel addressExistInDB(String address){
-        URL url = new URL(ApiConstant.URL_BASE + ApiConstant.URL_addressExists);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        //TODO:Continue...
-    }
 }

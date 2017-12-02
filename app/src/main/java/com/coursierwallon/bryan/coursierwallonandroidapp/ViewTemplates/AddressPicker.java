@@ -1,5 +1,6 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.ViewTemplates;
 
+import android.app.DialogFragment;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.DevConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.GoogleMapsConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Adapter.AddressArrayAdapter;
+import com.coursierwallon.bryan.coursierwallonandroidapp.DialogFragment.AddressPickerFragment;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AddressModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
 import com.google.android.gms.maps.CameraUpdate;
@@ -40,6 +43,7 @@ import java.util.List;
 public abstract class AddressPicker extends AppCompatActivity implements OnMapReadyCallback{
 
     private GoogleMap map;
+    private AddressModel newAddress;
     private ListView addressList;
     private Marker currentMarker = null;
     private int currentSelectedItem = -1;
@@ -50,6 +54,14 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
 
     public void setCurrentSelectedItem(int currentSelectedItem) {
         this.currentSelectedItem = currentSelectedItem;
+    }
+
+    public AddressModel getNewAddress() {
+        return newAddress;
+    }
+
+    public void setNewAddress(AddressModel newAddress) {
+        this.newAddress = newAddress;
     }
 
     public ListView getAddressList() {
@@ -143,6 +155,13 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker)));
     }
 
+    public void showAddAddressDialog(View v){
+        unCheckListView();
+        setCurrentSelectedItem(-2);
+        DialogFragment newFragment = new AddressPickerFragment();
+        newFragment.show(getFragmentManager(), "addressForm");
+    }
+
     public void removeCurrentMarker(){
         if(currentMarker != null){
             currentMarker.remove();
@@ -150,7 +169,21 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
         }
     }
 
+    public void unCheckListView(){
+        for(int i = 0; i < addressList.getChildCount(); i++){
+            View child = addressList.getChildAt(i);
+            CheckBox childCheckBox = child.findViewById(R.id.list_view_address_check_box);
+            if(childCheckBox.isChecked()){
+                childCheckBox.setChecked(false);
+            }
+        }
+        removeCurrentMarker();
+        initLocationZoom(GoogleMapsConstant.COURSIER_LAT, GoogleMapsConstant.COURSIER_LNG, GoogleMapsConstant.MAP_ZOOM);
+    }
+
     public abstract void actionOnNextButton();
+
+    public abstract void actionOnDialog(AddressModel addressModel);
 
     public abstract ArrayList<AddressModel> getAddressMethod(String userId) throws Exception;
 
@@ -160,7 +193,7 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
         protected ArrayList<AddressModel> doInBackground(String... userIds) {
             ArrayList<AddressModel> addressList = null;
             try {
-                addressList = getAddressMethod(userIds[0]);
+               addressList = getAddressMethod(userIds[0]);
             }catch (Exception e){
                 e.printStackTrace();
             }

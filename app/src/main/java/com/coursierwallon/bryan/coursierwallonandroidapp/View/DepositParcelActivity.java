@@ -20,19 +20,36 @@ public class DepositParcelActivity extends AddressPicker{
     @Override
     public void actionOnNextButton() {
         Gson gson = new Gson();
-        Bundle bundle = this.getIntent().getExtras();
-        String newOrderString = bundle.getString("newOrder");
-        OrderModel newOrder = gson.fromJson(newOrderString, OrderModel.class);
-        AddressModel DepositAddress = (AddressModel) getAddressList().getItemAtPosition(getCurrentSelectedItem());
-        newOrder.setDepositAddress(DepositAddress.getAddressId());
-        Intent intentToDateTimePicker = new Intent(this, DateTimePickerActivity.class);
-        intentToDateTimePicker.putExtra("newOrder", gson.toJson(newOrder));
-        startActivity(intentToDateTimePicker);
+        OrderModel newOrder = getNewOrder(gson);
+        AddressModel depositAddress = (AddressModel) getAddressList().getItemAtPosition(getCurrentSelectedItem());
+        newOrder.setDepositAddress(depositAddress.getAddressId());
+        newOrder.setDepositAddressNavigation(depositAddress);
+        goToIntent(gson, newOrder);
+    }
+
+    @Override
+    public void actionOnDialog(AddressModel newAddress) {
+        Gson gson = new Gson();
+        OrderModel newOrder = getNewOrder(gson);
+        newOrder.setDepositAddressNavigation(newAddress);
+        goToIntent(gson, newOrder);
     }
 
     @Override
     public ArrayList<AddressModel> getAddressMethod(String userId) throws Exception {
         AddressDAO dao = new AddressDAO();
         return dao.getAllDepositAddressByUser(userId);
+    }
+
+    public OrderModel getNewOrder(Gson gson){
+        Bundle bundle = this.getIntent().getExtras();
+        String newOrderString = bundle.getString("newOrder");
+        return gson.fromJson(newOrderString, OrderModel.class);
+    }
+
+    public void goToIntent(Gson gson, OrderModel newOrder){
+        Intent intentToDateTimePicker = new Intent(this, DateTimePickerActivity.class);
+        intentToDateTimePicker.putExtra("newOrder", gson.toJson(newOrder));
+        startActivity(intentToDateTimePicker);
     }
 }

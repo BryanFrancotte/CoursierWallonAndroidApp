@@ -5,27 +5,27 @@ package com.coursierwallon.bryan.coursierwallonandroidapp.Model;
  */
 
 public class AddressModel {
-    private long addressId;
+    private Long addressId;
     private String street;
     private String houseNumber;
     private String boxNumber;
-    private long localityIdAddress;
+    private Long localityIdAddress;
     private LocalityModel localityIdAddressNavigation;
 
-    public AddressModel(long addressId, String street, String houseNumber, String boxNumber, long localityIdAddress, LocalityModel localityIdAddressNavigation) {
-        this.addressId = addressId;
+    public AddressModel(String street, String houseNumber, String boxNumber, String localityName, String postalCode) {
+        this.addressId = null;
         this.street = street;
         this.houseNumber = houseNumber;
-        this.boxNumber = boxNumber;
-        this.localityIdAddress = localityIdAddress;
-        this.localityIdAddressNavigation = localityIdAddressNavigation;
+        this.setBoxNumber(boxNumber);
+        this.localityIdAddress = null;
+        this.localityIdAddressNavigation = new LocalityModel(localityName, postalCode);
     }
 
-    public long getAddressId() {
+    public Long getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(long addressId) {
+    public void setAddressId(Long addressId) {
         this.addressId = addressId;
     }
 
@@ -50,14 +50,14 @@ public class AddressModel {
     }
 
     public void setBoxNumber(String boxNumber) {
-        this.boxNumber = boxNumber;
+        this.boxNumber = (boxNumber.isEmpty())? null : boxNumber;
     }
 
-    public long getLocalityIdAddress() {
+    public Long getLocalityIdAddress() {
         return localityIdAddress;
     }
 
-    public void setLocalityIdAddress(long localityIdAddress) {
+    public void setLocalityIdAddress(Long localityIdAddress) {
         this.localityIdAddress = localityIdAddress;
     }
 

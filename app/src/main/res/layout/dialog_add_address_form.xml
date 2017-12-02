@@ -42,4 +42,5 @@
         android:ems="10"
         android:inputType="number"
         android:hint="Code postal"/>
+
 </LinearLayout>

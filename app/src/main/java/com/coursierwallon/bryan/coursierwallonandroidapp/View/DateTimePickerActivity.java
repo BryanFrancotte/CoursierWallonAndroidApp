@@ -21,7 +21,7 @@ import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by franc on 25-11-17.
@@ -32,7 +32,7 @@ public class DateTimePickerActivity extends AppCompatActivity {
     private TextView pickUpDateText, pickUpStarTimeText, pickUpEndTimeText;
     private TextView depositDateText, depositStartTimeText, depositEndTimeText;
     private Date pickUpDate, depositDate;
-    private Time pickUpStartTime, pickUpEndTime, depositStartTime, depositEndTime;
+    private String pickUpStartTime, pickUpEndTime, depositStartTime, depositEndTime;
 
     public int getClickedButtonId() {
         return clickedButtonId;
@@ -78,35 +78,35 @@ public class DateTimePickerActivity extends AppCompatActivity {
         this.depositDate = depositDate;
     }
 
-    public Time getPickUpStartTime() {
+    public String getPickUpStartTime() {
         return pickUpStartTime;
     }
 
-    public void setPickUpStartTime(Time pickUpStartTime) {
+    public void setPickUpStartTime(String pickUpStartTime) {
         this.pickUpStartTime = pickUpStartTime;
     }
 
-    public Time getPickUpEndTime() {
+    public String getPickUpEndTime() {
         return pickUpEndTime;
     }
 
-    public void setPickUpEndTime(Time pickUpEndTime) {
+    public void setPickUpEndTime(String pickUpEndTime) {
         this.pickUpEndTime = pickUpEndTime;
     }
 
-    public Time getDepositStartTime() {
+    public String getDepositStartTime() {
         return depositStartTime;
     }
 
-    public void setDepositStartTime(Time depositStartTime) {
+    public void setDepositStartTime(String depositStartTime) {
         this.depositStartTime = depositStartTime;
     }
 
-    public Time getDepositEndTime() {
+    public String getDepositEndTime() {
         return depositEndTime;
     }
 
-    public void setDepositEndTime(Time depositEndTime) {
+    public void setDepositEndTime(String depositEndTime) {
         this.depositEndTime = depositEndTime;
     }
 
@@ -160,8 +160,8 @@ public class DateTimePickerActivity extends AppCompatActivity {
                 newOrder.setDepositDate(depositDate);
                 newOrder.setPickUpStartTime(pickUpStartTime);
                 newOrder.setPickUpEndTime(pickUpEndTime);
-                newOrder.setDepositeStartTime(depositStartTime);
-                newOrder.setDepositeEndTime(depositEndTime);
+                newOrder.setDepositStartTime(depositStartTime);
+                newOrder.setDepositEndTime(depositEndTime);
                 Intent intentToParcelPicker = new Intent(this, ParcelTypePicker.class);
                 intentToParcelPicker.putExtra("newOrder", gson.toJson(newOrder));
                 startActivity(intentToParcelPicker);
@@ -193,17 +193,17 @@ public class DateTimePickerActivity extends AppCompatActivity {
         int minute = 00;
         String text = hour + "h" +((minute < 10)? "0" + minute : minute);
         pickUpStarTimeText.setText(text);
-        pickUpStartTime = convertStringToTime(text);
+        pickUpStartTime = convertStringToTime(text).toString();
         hour += 3;
         text = hour + "h" +((minute < 10)? "0" + minute : minute);
         pickUpEndTimeText.setText(text);
         depositEndTimeText.setText(text);
-        pickUpEndTime = convertStringToTime(text);
-        depositStartTime = convertStringToTime(text);
+        pickUpEndTime = convertStringToTime(text).toString();
+        depositStartTime = convertStringToTime(text).toString();
         hour += 2;
         text = hour + "h" +((minute < 10)? "0" + minute : minute);
         depositEndTimeText.setText(text);
-        depositEndTime = convertStringToTime(text);
+        depositEndTime = convertStringToTime(text).toString();
     }
 
     public void showTimePickerDialog(View v) {
@@ -220,9 +220,9 @@ public class DateTimePickerActivity extends AppCompatActivity {
 
     public Date convertStringToDate(String text){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = Calendar.getInstance().getTime();
+        Date date = new Date(Calendar.getInstance().getTimeInMillis());
         try {
-            date = sdf.parse(text);
+            date.setTime(sdf.parse(text).getTime());
         } catch (ParseException e) {
             e.printStackTrace();
         }

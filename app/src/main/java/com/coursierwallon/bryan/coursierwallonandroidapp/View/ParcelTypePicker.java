@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -68,10 +69,9 @@ public class ParcelTypePicker extends AppCompatActivity {
                 OrderModel newOrder = gson.fromJson(bundle.getString("newOrder"), OrderModel.class);
                 newOrder.setDeliveryType(deliveryType);
                 newOrder.addPacel(new ParcelModel(parcelType));
-                Toast.makeText(this, gson.toJson(newOrder), Toast.LENGTH_LONG).show();
                 Intent intentToConfirmationOrder = new Intent(this, OrderConfirmationActivity.class);
                 intentToConfirmationOrder.putExtra("newOrder", gson.toJson(newOrder));
-                //startActivity(intentToConfirmationOrder);
+                startActivity(intentToConfirmationOrder);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

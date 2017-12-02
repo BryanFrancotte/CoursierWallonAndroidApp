@@ -12,7 +12,7 @@ import com.coursierwallon.bryan.coursierwallonandroidapp.View.DateTimePickerActi
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by franc on 25-11-17.

@@ -19,21 +19,37 @@ public class PickupParcelActivity extends AddressPicker{
 
     @Override
     public void actionOnNextButton() {
-        Gson gson = new Gson();
-        OrderModel newOrder = new OrderModel(OrderConstant.STATE, DevConstant.USER_BRYAN);
-        AddressModel PickUpAddress = (AddressModel) getAddressList().getItemAtPosition(getCurrentSelectedItem());
-        newOrder.setPickUpDate(OrderConstant.getDate());
-        newOrder.setBillingAddress(PickUpAddress.getAddressId());
-        newOrder.setPickUpAddress(PickUpAddress.getAddressId());
-        String newOrderString = gson.toJson(newOrder);
-        Intent intentToDeposit = new Intent(this, DepositParcelActivity.class);
-        intentToDeposit.putExtra("newOrder", newOrderString);
-        startActivity(intentToDeposit);
+        AddressModel pickUpAddress = (AddressModel) getAddressList().getItemAtPosition(getCurrentSelectedItem());
+        OrderModel newOrder = setUpNewOrder(pickUpAddress);
+        newOrder.setBillingAddress(pickUpAddress.getAddressId());
+        newOrder.setPickUpAddress(pickUpAddress.getAddressId());
+        goToIntent(newOrder);
+    }
+
+    @Override
+    public void actionOnDialog(AddressModel newAddress) {
+        OrderModel newOrder = setUpNewOrder(newAddress);
+        goToIntent(newOrder);
     }
 
     @Override
     public ArrayList<AddressModel> getAddressMethod(String userId) throws Exception {
         AddressDAO dao = new AddressDAO();
         return dao.getAllPickUpAddressByUser(userId);
+    }
+
+    public OrderModel setUpNewOrder(AddressModel newAddress){
+        OrderModel newOrder = new OrderModel(OrderConstant.STATE, DevConstant.USER_BRYAN);
+        newOrder.setBillingAddressNavigation(newAddress);
+        newOrder.setPickUpAddressNavigation(newAddress);
+        return newOrder;
+    }
+
+    public void goToIntent(OrderModel newOrder){
+        Gson gson = new Gson();
+        String newOrderString = gson.toJson(newOrder);
+        Intent intentToDeposit = new Intent(this, DepositParcelActivity.class);
+        intentToDeposit.putExtra("newOrder", newOrderString);
+        startActivity(intentToDeposit);
     }
 }

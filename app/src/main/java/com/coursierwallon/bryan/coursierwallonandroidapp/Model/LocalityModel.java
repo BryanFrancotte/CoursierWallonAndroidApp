@@ -6,21 +6,21 @@ package com.coursierwallon.bryan.coursierwallonandroidapp.Model;
 
 public class LocalityModel {
 
-    private long localityId;
+    private Long localityId;
     private String name;
     private int postalCode;
 
-    public LocalityModel(long localityId, String name, int postalCode) {
-        this.localityId = localityId;
+    public LocalityModel(String name, String postalCode) {
+        this.localityId = null;
         this.name = name;
-        this.postalCode = postalCode;
+        this.postalCode = Integer.parseInt(postalCode);
     }
 
-    public long getLocalityId() {
+    public Long getLocalityId() {
         return localityId;
     }
 
-    public void setLocalityId(long localityId) {
+    public void setLocalityId(Long localityId) {
         this.localityId = localityId;
     }
 
