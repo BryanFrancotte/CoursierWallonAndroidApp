@@ -42,4 +42,12 @@ public class HomeActivity extends AppCompatActivity {
         this.getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+    @Override
+    public void onBackPressed() {
+        // calling the home screen from the phone
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        startActivity(intent);
+    }
 }
