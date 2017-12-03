@@ -20,7 +20,7 @@ public class PickupParcelActivity extends AddressPicker{
     @Override
     public void actionOnNextButton() {
         AddressModel pickUpAddress = (AddressModel) getAddressList().getItemAtPosition(getCurrentSelectedItem());
-        OrderModel newOrder = setUpNewOrder(pickUpAddress);
+        OrderModel newOrder = setUpNewOrder(pickUpAddress, getUserId());
         newOrder.setBillingAddress(pickUpAddress.getAddressId());
         newOrder.setPickUpAddress(pickUpAddress.getAddressId());
         goToIntent(newOrder);
@@ -28,18 +28,18 @@ public class PickupParcelActivity extends AddressPicker{
 
     @Override
     public void actionOnDialog(AddressModel newAddress) {
-        OrderModel newOrder = setUpNewOrder(newAddress);
+        OrderModel newOrder = setUpNewOrder(newAddress, getUserId());
         goToIntent(newOrder);
     }
 
     @Override
-    public ArrayList<AddressModel> getAddressMethod(String userId) throws Exception {
+    public ArrayList<AddressModel> getAddressMethod(String userId, String token) throws Exception {
         AddressDAO dao = new AddressDAO();
-        return dao.getAllPickUpAddressByUser(userId);
+        return dao.getAllPickUpAddressByUser(userId, token);
     }
 
-    public OrderModel setUpNewOrder(AddressModel newAddress){
-        OrderModel newOrder = new OrderModel(OrderConstant.STATE, DevConstant.USER_BRYAN);
+    public OrderModel setUpNewOrder(AddressModel newAddress, String userId){
+        OrderModel newOrder = new OrderModel(OrderConstant.STATE, userId);
         newOrder.setBillingAddressNavigation(newAddress);
         newOrder.setPickUpAddressNavigation(newAddress);
         return newOrder;

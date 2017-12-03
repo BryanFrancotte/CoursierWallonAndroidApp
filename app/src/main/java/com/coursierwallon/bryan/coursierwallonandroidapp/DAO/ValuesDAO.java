@@ -16,13 +16,13 @@ import java.net.URL;
  */
 
 public class ValuesDAO {
-    public String getAll(AccessToken token) throws Exception{
+    public String getAll(String token) throws Exception{
         URL url = new URL("http://apicoursier.azurewebsites.net/api/Values");
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setRequestMethod("GET");
-        connection.setRequestProperty("Authorization", "Bearer " + token.getToken());
         connection.setDoOutput(false);
         connection.setDoInput(true);
+        connection.setRequestProperty("Authorization", "Bearer " + token);
         if(connection.getResponseCode() == HttpURLConnection.HTTP_OK){
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             StringBuilder stringBuilder = new StringBuilder();

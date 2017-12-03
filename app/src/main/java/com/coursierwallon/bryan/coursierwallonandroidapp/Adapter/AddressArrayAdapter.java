@@ -26,7 +26,6 @@ public class AddressArrayAdapter extends ArrayAdapter<AddressModel> {
     private Context context;
     private AddressPicker activity;
     private List<AddressModel> lstAddress;
-    private int currentPosition;
 
     public AddressArrayAdapter (Context context, int resource, ArrayList<AddressModel> lstAddress){
         super(context, resource, lstAddress);

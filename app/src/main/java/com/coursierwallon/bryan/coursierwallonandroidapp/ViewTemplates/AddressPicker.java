@@ -1,10 +1,12 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.ViewTemplates;
 
 import android.app.DialogFragment;
+import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -16,6 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.auth0.android.jwt.JWT;
+import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.ApiConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.DevConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.GoogleMapsConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Adapter.AddressArrayAdapter;
@@ -42,6 +46,7 @@ import java.util.List;
 
 public abstract class AddressPicker extends AppCompatActivity implements OnMapReadyCallback{
 
+    private String userId, token;
     private GoogleMap map;
     private AddressModel newAddress;
     private ListView addressList;
@@ -50,6 +55,10 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
 
     public int getCurrentSelectedItem() {
         return currentSelectedItem;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 
     public void setCurrentSelectedItem(int currentSelectedItem) {
@@ -78,11 +87,16 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        token = preferences.getString(ApiConstant.TOKEN,null);
+        JWT jwt = new JWT(token);
+        userId = jwt.getSubject();
+
         SupportMapFragment mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         addressList = findViewById(R.id.list_address);
-        new GetAllPickupAddressByUser().execute(DevConstant.USER_BRYAN);
+        new GetAllPickupAddressByUser().execute(userId, token);
     }
 
     @Override
@@ -185,15 +199,15 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
 
     public abstract void actionOnDialog(AddressModel addressModel);
 
-    public abstract ArrayList<AddressModel> getAddressMethod(String userId) throws Exception;
+    public abstract ArrayList<AddressModel> getAddressMethod(String userId, String token) throws Exception;
 
     private class GetAllPickupAddressByUser extends AsyncTask<String, Void, ArrayList<AddressModel>> {
 
         @Override
-        protected ArrayList<AddressModel> doInBackground(String... userIds) {
+        protected ArrayList<AddressModel> doInBackground(String... params) {
             ArrayList<AddressModel> addressList = null;
             try {
-               addressList = getAddressMethod(userIds[0]);
+               addressList = getAddressMethod(params[0], params[1]);
             }catch (Exception e){
                 e.printStackTrace();
             }

@@ -1,8 +1,10 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.View;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.ApiConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.OrderConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.DAO.OrderDAO;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.OrderModel;
@@ -24,6 +27,8 @@ import java.net.HttpURLConnection;
  */
 
 public class OrderConfirmationActivity extends AppCompatActivity {
+
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,9 @@ public class OrderConfirmationActivity extends AppCompatActivity {
 
         Button confirm = findViewById(R.id.confirmationOrder_layout_confirm_button);
         Button cancel = findViewById(R.id.confirmationOrder_layout_cancel_button);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        token = preferences.getString(ApiConstant.TOKEN, null);
 
         Gson gson = new Gson();
         final Bundle bundle = getIntent().getExtras();
@@ -113,7 +121,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             OrderDAO dao = new OrderDAO();
             Integer result = null;
             try{
-                result = dao.addOrder(newOrders[0]);
+                result = dao.addOrder(token, newOrders[0]);
             }catch (Exception e){
                 e.printStackTrace();
             }
