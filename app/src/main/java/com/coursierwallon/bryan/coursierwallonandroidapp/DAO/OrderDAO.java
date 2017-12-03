@@ -4,6 +4,7 @@ import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.ApiConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AddressModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.OrderModel;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -40,7 +41,7 @@ public class OrderDAO {
     }
 
     private String prepareNewOrder(OrderModel newOrder){
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
         if(newOrder.getBillingAddress() != null){
             newOrder.setBillingAddressNavigation(null);
         }
