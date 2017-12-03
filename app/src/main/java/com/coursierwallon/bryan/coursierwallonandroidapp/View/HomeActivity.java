@@ -1,8 +1,10 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.View;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -20,7 +22,9 @@ import com.google.gson.Gson;
  */
 
 public class HomeActivity extends AppCompatActivity {
-    private Button parcelButton,letterButton;
+
+    private SharedPreferences preferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +34,8 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
-        parcelButton = findViewById(R.id.parcelButton);
-        letterButton = findViewById(R.id.letterButton);
+        Button parcelButton = findViewById(R.id.parcelButton);
+        Button letterButton = findViewById(R.id.letterButton);
 
         parcelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,12 +44,6 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intentToOrder);
             }
         });
-
-        Gson gson = new Gson();
-        Bundle bundle = this.getIntent().getExtras();
-        String tokenString = bundle.getString("accessToken");
-        AccessToken token = gson.fromJson(tokenString, AccessToken.class);
-        new Values().execute(token);
     }
 
     @Override
@@ -60,27 +58,5 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         startActivity(intent);
-    }
-
-    private class Values extends AsyncTask<AccessToken, Void, String> {
-
-        @Override
-        protected String doInBackground(AccessToken... accessTokens) {
-            ValuesDAO dao = new ValuesDAO();
-            try {
-                return dao.getAll(accessTokens[0]);
-            }catch (Exception e){
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String string){
-            if(string != null) {
-                Toast.makeText(HomeActivity.this, string, Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(HomeActivity.this, "pas autorisé", Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 }

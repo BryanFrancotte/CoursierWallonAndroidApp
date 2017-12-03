@@ -15,13 +15,14 @@ import java.sql.Connection;
  */
 
 public class OrderDAO {
-    public int addOrder(OrderModel newOrder) throws Exception{
+    public int addOrder(String token, OrderModel newOrder) throws Exception{
         URL url =  new URL(ApiConstant.URL_BASE + ApiConstant.URL_AddOrder);
 
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setDoInput(false);
         connection.setDoOutput(true);
+        connection.setRequestProperty("Authorization", "Bearer " + token);
         connection.setRequestProperty("Content-Type", "application/json");
 
         String newOrderString = prepareNewOrder(newOrder);

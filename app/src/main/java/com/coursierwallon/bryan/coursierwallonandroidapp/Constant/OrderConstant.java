@@ -9,8 +9,6 @@ import java.util.Date;
 
 public class OrderConstant {
     public static final String STATE = "NOT_ACCEPTED";
-    public static final int pickUp = 1;
-    public static final int deposit = 10;
     public static final int TYPE_S = 0;//TODO: faire une enum pour ce truc
     public static final int TYPE_M = 1;
     public static final int TYPE_L = 2;

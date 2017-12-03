@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 //TODO rethink about those damn methods :/
 public class AddressDAO {
-    public ArrayList<AddressModel> getAllPickUpAddressByUser(String userId) throws Exception{
+    public ArrayList<AddressModel> getAllPickUpAddressByUser(String userId, String token) throws Exception{
         ArrayList<AddressModel> addresses = new ArrayList<>();
         Gson gson = new Gson();
 
@@ -26,6 +26,7 @@ public class AddressDAO {
         connection.setRequestMethod("GET");
         connection.setDoInput(true);
         connection.setDoOutput(false);
+        connection.setRequestProperty("Authorization", "Bearer " + token);
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         StringBuilder builder = new StringBuilder();
@@ -44,7 +45,7 @@ public class AddressDAO {
         return addresses;
     }
 
-    public ArrayList<AddressModel> getAllDepositAddressByUser(String userId) throws Exception{
+    public ArrayList<AddressModel> getAllDepositAddressByUser(String userId, String token) throws Exception{
         ArrayList<AddressModel> addresses = new ArrayList<>();
         Gson gson = new Gson();
 
@@ -53,6 +54,7 @@ public class AddressDAO {
         connection.setRequestMethod("GET");
         connection.setDoInput(true);
         connection.setDoOutput(false);
+        connection.setRequestProperty("Authorization", "Bearer " + token);
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         StringBuilder builder = new StringBuilder();
