@@ -1,6 +1,7 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.View;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,15 +10,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.coursierwallon.bryan.coursierwallonandroidapp.DAO.UserDAO;
+import com.coursierwallon.bryan.coursierwallonandroidapp.Model.UserModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
+
+import java.net.HttpURLConnection;
 
 /**
  * Created by franc on 19-10-17.
  */
 
 public class SignUpActivity extends AppCompatActivity{
-    private Button registerButton;
-    private EditText email, password, paswordConfirm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,23 +32,56 @@ public class SignUpActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        registerButton = findViewById(R.id.register);
-        email = findViewById(R.id.emailInput);
-        password = findViewById(R.id.passwordInput);
-
-        final Intent intentToInfoSignUp = new Intent(this, InfoSignUpActivity.class);
-        intentToInfoSignUp.putExtra("email", email.getText().toString());
-        intentToInfoSignUp.putExtra("password", password.getText().toString());
+        Button registerButton = findViewById(R.id.register);
+        final EditText username = findViewById(R.id.userInput);
+        final EditText email = findViewById(R.id.emailInput);
+        final EditText password = findViewById(R.id.passwordInput);
+        final EditText passwordConfirm = findViewById(R.id.confirmPasswordInput);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!email.getText().toString().isEmpty() && !password.getText().toString().isEmpty()) {
-                    startActivity(intentToInfoSignUp);
+                UserModel newUser = new UserModel(
+                        username.getText().toString(),
+                        email.getText().toString(),
+                        password.getText().toString(),
+                        passwordConfirm.getText().toString()
+                );
+                if(newUser.isvalid()){
+                    new Registration().execute(newUser);
                 }else{
-                    Toast.makeText(SignUpActivity.this, R.string.empty_input_error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Information non valid", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+
+    private class Registration extends AsyncTask<UserModel, Void, Integer>{
+
+        @Override
+        protected Integer doInBackground(UserModel... userModels) {
+
+            Integer resultCode = null;
+            UserDAO dao = new UserDAO();
+
+            try{
+                resultCode = dao.registration(userModels[0]);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return resultCode;
+        }
+
+        @Override
+        protected void onPostExecute(Integer resultCode) {
+            if(resultCode == HttpURLConnection.HTTP_OK){
+                Toast.makeText(SignUpActivity.this, "Utilisateur bien enregistré", Toast.LENGTH_SHORT).show();
+                Intent intentToLogin = new Intent(SignUpActivity.this, LoginActivity.class);
+                startActivity(intentToLogin);
+            }else{
+                Toast.makeText(SignUpActivity.this, "Une erreur est survenue lors de l'inscription", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
