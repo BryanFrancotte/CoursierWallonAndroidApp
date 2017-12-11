@@ -16,8 +16,10 @@ import com.coursierwallon.bryan.coursierwallonandroidapp.DialogFragment.TimePick
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.OrderModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.sql.Time;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -153,7 +155,7 @@ public class DateTimePickerActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.order_menu_next:
-                Gson gson = new Gson();
+                Gson gson = new GsonBuilder().setDateFormat(DateFormat.MEDIUM).create();
                 Bundle bundle = getIntent().getExtras();
                 OrderModel newOrder = gson.fromJson(bundle.getString("newOrder"), OrderModel.class);
                 newOrder.setPickUpDate(pickUpDate);

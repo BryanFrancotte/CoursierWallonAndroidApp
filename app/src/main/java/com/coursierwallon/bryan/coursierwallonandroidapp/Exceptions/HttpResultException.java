@@ -16,14 +16,14 @@ public class HttpResultException extends Exception {
 
     @Override
     public String getMessage() {
+        if(statusCode >= HttpURLConnection.HTTP_INTERNAL_ERROR){
+            return "Le Serveur rencontre actuellement un problème";
+        }
         if(statusCode >= HttpURLConnection.HTTP_BAD_REQUEST){
             if(statusCode == HttpURLConnection.HTTP_BAD_REQUEST || statusCode == HttpURLConnection.HTTP_UNAUTHORIZED){
                 return "E-mail ou mot de passe incorrect";
             }
             return "Erreur de connexion de l'appareil";
-        }
-        if(statusCode >= HttpURLConnection.HTTP_INTERNAL_ERROR){
-            return "Le Serveur rencontre actuellement un problème";
         }
         return super.getMessage();
     }
