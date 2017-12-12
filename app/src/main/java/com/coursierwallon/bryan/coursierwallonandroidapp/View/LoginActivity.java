@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,11 +14,9 @@ import android.widget.Toast;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.ApiConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.DAO.UserDAO;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Exceptions.HttpResultException;
-import com.coursierwallon.bryan.coursierwallonandroidapp.Firebase.FirebaseCloudMessage;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AccessToken;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.UserModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
-import com.google.firebase.iid.FirebaseInstanceIdService;
 
 /**
  * Created by bryan on 17-10-17.
@@ -39,7 +36,6 @@ public class LoginActivity extends AppCompatActivity{
         //Button signUpButton = findViewById(R.id.signUpButton);
         final EditText emailInput = findViewById(R.id.emailInput);
         final EditText passwordInput = findViewById(R.id.passwordInput);
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,11 +69,9 @@ public class LoginActivity extends AppCompatActivity{
         @Override
         protected AccessToken doInBackground(UserModel... users) {
             UserDAO userDAO = new UserDAO();
-            FirebaseCloudMessage fcm = new FirebaseCloudMessage();
             AccessToken token = null;
             try {
                 token = userDAO.connexion(users[0]);
-                fcm.onTokenRefresh();
             }catch(HttpResultException e){
                 exception = e;
                 cancel(true);
@@ -102,7 +96,7 @@ public class LoginActivity extends AppCompatActivity{
                 Intent intentToHome = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(intentToHome);
             }else {
-                Toast.makeText(LoginActivity.this,"Something went wrong with the login", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this,"Something went wrong with the login", Toast.LENGTH_SHORT).show();// TODO: faire ça avec @string
             }
         }
     }

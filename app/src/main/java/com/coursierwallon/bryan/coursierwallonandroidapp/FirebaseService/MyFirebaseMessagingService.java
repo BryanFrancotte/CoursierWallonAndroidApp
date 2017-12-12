@@ -1,14 +1,14 @@
-package com.coursierwallon.bryan.coursierwallonandroidapp.Firebase;
+package com.coursierwallon.bryan.coursierwallonandroidapp.FirebaseService;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
 import com.coursierwallon.bryan.coursierwallonandroidapp.View.LoginActivity;
@@ -21,7 +21,7 @@ import com.google.firebase.messaging.RemoteMessage;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
-    private static final String TAG="FirebaseMessagingServic";
+    //private static final String TAG="FirebaseMessagingServic";
 
     public MyFirebaseMessagingService() {
     }
@@ -31,10 +31,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         String strTitle=remoteMessage.getNotification().getTitle();
         String message=remoteMessage.getNotification().getBody();
-        Log.d(TAG,"onMessageReceived:" +
-                "Message Received: \n" +
-        "Title: " + strTitle + "\n" +
-                "Message: "+ message);
+        //Log.d(TAG,"onMessageReceived:" +
+        //        "Message Received: \n" +
+        //"Title: " + strTitle + "\n" +
+        //        "Message: "+ message);
 
         sendNotification(strTitle,message);
     }
@@ -56,19 +56,20 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 intents,PendingIntent.FLAG_ONE_SHOT);
         Uri defaultSoundUri= RingtoneManager.getDefaultUri
                 (RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationbuilder=
-                new NotificationCompat.Builder(this)
+        Notification.Builder notificationBuilder=
+                new Notification.Builder(this)
                         .setSmallIcon(R.drawable.coursier_wallon_logo)
-                        .setContentTitle("Service Now")
+                        .setContentTitle(title)
                         .setContentText(messageBody)
                         .setAutoCancel(true)
                         .setSound(defaultSoundUri)
+                        .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
                         .setContentIntent(pendingIntent)
                         .setLargeIcon(BitmapFactory.decodeResource
-                                (getResources(), R.mipmap.ic_launcher));;
+                                (getResources(), R.drawable.coursier_wallon_logo));;
 
         NotificationManager notificationManager=(NotificationManager)
                 getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0, notificationbuilder.build());
+        notificationManager.notify(0, notificationBuilder.build());
     }
 }
