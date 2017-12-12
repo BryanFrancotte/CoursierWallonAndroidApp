@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.coursierwallon.bryan.coursierwallonandroidapp">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -17,6 +18,31 @@
         android:roundIcon="@mipmap/coursier_wallon_logo"
         android:supportsRtl="true"
         android:theme="@style/CoursierTheme.NoToolbar">
+
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/coursier_wallon_logo" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
+        <service android:name=".Firebase.FirebaseCloudMessage">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".Firebase.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -28,83 +54,69 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <!-- Google Original activity ***********************************************************-->
-        <activity
-            android:name=".View.MapsActivity">
-
-        </activity>
-        <!--*************************************************************************************-->
+        <!-- Google Original activity *********************************************************** -->
+        <activity android:name=".View.MapsActivity"></activity>
+        <!-- ************************************************************************************* -->
         <activity
             android:name=".View.PickupParcelActivity"
             android:label="@string/title_activity_maps"
-            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"
-            android:parentActivityName=".View.HomeActivity">
-
-        </activity>
+            android:parentActivityName=".View.HomeActivity"
+            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"></activity>
         <activity
             android:name=".View.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".View.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar">
-
-        </activity>
+            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"></activity>
         <activity
             android:name=".View.SignUpActivity"
             android:label="@string/sign_up"
-            android:theme="@style/CoursierTheme.NoToolbar"
+            android:parentActivityName=".View.LoginActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".View.LoginActivity">
-
-        </activity>
+            android:theme="@style/CoursierTheme.NoToolbar"></activity>
         <activity
             android:name=".View.InfoSignUpActivity"
             android:label="@string/sign_up"
-            android:theme="@style/CoursierTheme.NoToolbar"
+            android:parentActivityName=".View.SignUpActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".View.SignUpActivity">
-
-        </activity>
+            android:theme="@style/CoursierTheme.NoToolbar"></activity>
         <activity
             android:name=".View.HomeActivity"
             android:label="@string/home_label"
-            android:theme="@style/CoursierTheme.NoToolbar">
-
-        </activity>
+            android:theme="@style/CoursierTheme.NoToolbar"></activity>
         <activity
             android:name=".View.DepositParcelActivity"
             android:label="@string/title_activity_deposit"
-            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"
-            android:parentActivityName=".View.PickupParcelActivity">
-
-        </activity>
+            android:parentActivityName=".View.PickupParcelActivity"
+            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"></activity>
         <activity
             android:name=".View.DateTimePickerActivity"
             android:label="date And Time"
-            android:theme="@style/CoursierTheme.NoToolbar"
-            android:parentActivityName=".View.DepositParcelActivity">
-
-        </activity>
-        <activity android:name=".View.ParcelTypePicker"
+            android:parentActivityName=".View.DepositParcelActivity"
+            android:theme="@style/CoursierTheme.NoToolbar"></activity>
+        <activity
+            android:name=".View.ParcelTypePicker"
             android:label="type"
-            android:theme="@style/CoursierTheme.NoToolbar"
-            android:parentActivityName=".View.DateTimePickerActivity">
-
-        </activity>
-        <activity android:name=".View.OrderConfirmationActivity"
+            android:parentActivityName=".View.DateTimePickerActivity"
+            android:theme="@style/CoursierTheme.NoToolbar"></activity>
+        <activity
+            android:name=".View.OrderConfirmationActivity"
             android:label="Confirmation"
-            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"
-            android:parentActivityName=".View.ParcelTypePicker">
+            android:parentActivityName=".View.ParcelTypePicker"
+            android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"></activity>
 
-        </activity>
-
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

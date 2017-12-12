@@ -15,9 +15,11 @@ import android.widget.Toast;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.ApiConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.DAO.UserDAO;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Exceptions.HttpResultException;
+import com.coursierwallon.bryan.coursierwallonandroidapp.Firebase.FirebaseCloudMessage;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AccessToken;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.UserModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
+import com.google.firebase.iid.FirebaseInstanceIdService;
 
 /**
  * Created by bryan on 17-10-17.
@@ -71,10 +73,11 @@ public class LoginActivity extends AppCompatActivity{
         @Override
         protected AccessToken doInBackground(UserModel... users) {
             UserDAO userDAO = new UserDAO();
+            FirebaseCloudMessage fcm = new FirebaseCloudMessage();
             AccessToken token = null;
             try {
                 token = userDAO.connexion(users[0]);
-                Log.i("Contenu inputJsonString",  token.toString());
+                fcm.onTokenRefresh();
             }catch(HttpResultException e){
                 exception = e;
                 cancel(true);
