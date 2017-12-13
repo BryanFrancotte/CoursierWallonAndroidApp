@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,7 +36,6 @@ public class LoginActivity extends AppCompatActivity{
         //Button signUpButton = findViewById(R.id.signUpButton);
         final EditText emailInput = findViewById(R.id.emailInput);
         final EditText passwordInput = findViewById(R.id.passwordInput);
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +72,6 @@ public class LoginActivity extends AppCompatActivity{
             AccessToken token = null;
             try {
                 token = userDAO.connexion(users[0]);
-                Log.i("Contenu inputJsonString",  token.toString());
             }catch(HttpResultException e){
                 exception = e;
                 cancel(true);
@@ -99,7 +96,7 @@ public class LoginActivity extends AppCompatActivity{
                 Intent intentToHome = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(intentToHome);
             }else {
-                Toast.makeText(LoginActivity.this,"Something went wrong with the login", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this,"Something went wrong with the login", Toast.LENGTH_SHORT).show();// TODO: faire ça avec @string
             }
         }
     }
