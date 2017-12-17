@@ -19,7 +19,7 @@
         android:id="@+id/address_picker_addAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add an address"
+        android:text="@string/AddressPicker_AddAddress"
         android:onClick="showAddAddressDialog"/>
 
     <RelativeLayout

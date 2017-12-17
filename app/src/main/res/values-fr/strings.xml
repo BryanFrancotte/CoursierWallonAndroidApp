@@ -32,4 +32,18 @@
     <string name="title_activity_maps">Adresse de retrait</string>
     <string name="title_activity_deposit">Adresse de destination</string>
     <string name="error_empty_address">Aucune adresse selectionnée</string>
+    <string name="HttpUrlConnection_InternalError">Le Serveur rencontre actuellement un problème</string>
+    <string name="HttpConnection_Unauthorized">E-mail ou mot de passe incorrect</string>
+    <string name="HttpUrlConnection_ClientError">Erreur de connexion de l\'appareil</string>
+    <string name="SignUp_Success">Utilisateur bien enregistré</string>
+    <string name="SignUp_Error">Une erreur est survenue lors de l\'inscription</string>
+    <string name="type_s">Type S</string>
+    <string name="wieght_typeS">Poids : 10kg</string>
+    <string name="width_type_S">largeur : 40cm</string>
+    <string name="length_type_M">longueur : 60cm</string>
+    <string name="weigth_type_M">Poids : 30kg</string>
+    <string name="type_m">Type M</string>
+    <string name="heigth_type_S">hauteur : 30cm</string>
+    <string name="length_type_S">longueur : 30cm</string>
+    <string name="width_type_M">largeur : 40cm</string>
 </resources>

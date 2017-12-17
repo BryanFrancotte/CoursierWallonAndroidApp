@@ -50,7 +50,7 @@ public class SignUpActivity extends AppCompatActivity{
                 if(newUser.isvalid()){
                     new Registration().execute(newUser);
                 }else{
-                    Toast.makeText(SignUpActivity.this, "Information non valid", Toast.LENGTH_SHORT).show();// TODO : faire ça avec @string
+                    Toast.makeText(SignUpActivity.this, R.string.SignUp_InfoError, Toast.LENGTH_SHORT).show();// TODO : faire ça avec @string
                 }
             }
         });
@@ -76,11 +76,11 @@ public class SignUpActivity extends AppCompatActivity{
         @Override
         protected void onPostExecute(Integer resultCode) {
             if(resultCode == HttpURLConnection.HTTP_OK){
-                Toast.makeText(SignUpActivity.this, "Utilisateur bien enregistré", Toast.LENGTH_SHORT).show();// TODO: faire ça avec @string
+                Toast.makeText(SignUpActivity.this, R.string.SignUp_Success, Toast.LENGTH_SHORT).show();// TODO: faire ça avec @string
                 Intent intentToLogin = new Intent(SignUpActivity.this, LoginActivity.class);
                 startActivity(intentToLogin);
             }else{
-                Toast.makeText(SignUpActivity.this, "Une erreur est survenue lors de l'inscription", Toast.LENGTH_SHORT).show();// TODO: faire ça avec @string
+                Toast.makeText(SignUpActivity.this, R.string.SignUp_Error, Toast.LENGTH_SHORT).show();// TODO: faire ça avec @string
             }
         }
     }

@@ -32,4 +32,36 @@
 
     <string name="empty_input_error">The email and the password can not be empty!</string>
     <string name="app_name">CoursierWallon</string>
+    <string name="addressPickerFragment_ok">Ok</string>
+    <string name="addressPickerFragment_cancel">Cancel</string>
+    <string name="addressPickerFragment_invalidAddress">Invalid address</string>
+    <string name="datePickerFragment_erreur">erreur</string>
+    <string name="LoginActivity_Error">Something went wrong with the login</string>
+    <string name="OrderConfirmation_TypeS">parcel type S</string>
+    <string name="OrderConfirmation_TypeM">parcel type M</string>
+    <string name="OrderConfirmation_TypeL">parcel type L</string>
+    <string name="OrderConfirmation_TypeXL">parcel type XL</string>
+    <string name="OrderConfirmation_NoSpec">None specified</string>
+    <string name="OrderConfirmation_DelTypeNormal">delivery type Normal</string>
+    <string name="OrderConfirmation_DelTypeSemiExpress">delivery type Semi Express</string>
+    <string name="OrderConfirmation_DelTypeExpress">delivery type Express</string>
+    <string name="OrderConfirmation_DelTypeNoSpec">None specified</string>
+    <string name="OrderConfirmation_Added">OrderAdded</string>
+    <string name="OrderConfirmation_Error">Somethig went wrong</string>
+    <string name="SignUp_InfoError">Information non valid</string>
+    <string name="AddressPicker_AddAddress">Add an address</string>
+    <string name="OrderConfirmation_parcel">Parcel :</string>
+    <string name="OrderConfirmation_pick_up_address">Pick up address :</string>
+    <string name="OrderConfirmation_deposit_address">Deposit address :</string>
+    <string name="OrderConfirmation_delivery_type">Delivery type :</string>
+    <string name="OrderConfirmation_estimated_price">Estimated price :</string>
+    <string name="OrderConfirmation_Button_confirm">Confirm</string>
+    <string name="OrderConfirmation_Button_cancel">Cancel</string>
+    <string name="Activity_pick_up_date_and_time">Pick up date and time</string>
+    <string name="Activity_deposit_date_and_time">Deposit date and time</string>
+    <string name="home_parcel">Parcel</string>
+    <string name="home_letter">Letter</string>
+    <string name="select_the_parcel_type">Select the parcel type :</string>
+    <string name="type_s">Type S</string>
+    <string name="type_m">Type M</string>
 </resources>

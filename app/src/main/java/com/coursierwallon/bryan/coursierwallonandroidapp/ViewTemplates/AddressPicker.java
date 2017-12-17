@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 import com.auth0.android.jwt.JWT;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.ApiConstant;
-import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.DevConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.GoogleMapsConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Adapter.AddressArrayAdapter;
 import com.coursierwallon.bryan.coursierwallonandroidapp.DialogFragment.AddressPickerFragment;
