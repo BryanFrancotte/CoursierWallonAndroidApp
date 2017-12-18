@@ -4,10 +4,7 @@
 
     <item
         android:id="@+id/order_menu_next"
-        android:title="next"
+        android:title="@string/order_menu_next"
         app:actionLayout="@layout/menu_item_next"
         app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/dummy_button"
-        android:title="dummy"/>
 </menu>
