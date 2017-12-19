@@ -70,6 +70,7 @@
     <string name="normal_delivery">Normal delivery</string>
     <string name="semi_express_delivery">Semi-express delivery</string>
     <string name="express_delivery">Express delivery</string>
+
     <string name="order_menu_next">Next</string>
     <string name="HttpConnection_Unauthorized">Email or password is incorrect</string>
     <string name="HttpUrlConnection_ClientError">Client error</string>
