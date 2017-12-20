@@ -30,7 +30,8 @@
     <string name="address_hint">Adresse</string>
     <string name="title_activity_maps">Adresse de retrait</string>
     <string name="title_activity_deposit">Adresse de destination</string>
-    <string name="error_empty_address">Aucune adresse selectionnée!</string>
+    <string name="connection_lost">Connection perdue</string>
+    <string name="error_empty_address">Aucune adresse selectionnée</string>
     <string name="HttpUrlConnection_InternalError">Le serveur rencontre actuellement un problème</string>
     <string name="HttpConnection_Unauthorized">E-mail ou mot de passe incorrect</string>
     <string name="HttpUrlConnection_ClientError">Erreur de connexion de l\'appareil</string>
