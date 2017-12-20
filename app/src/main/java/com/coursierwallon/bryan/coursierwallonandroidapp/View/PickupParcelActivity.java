@@ -2,7 +2,6 @@ package com.coursierwallon.bryan.coursierwallonandroidapp.View;
 
 import android.content.Intent;
 
-import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.DevConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.OrderConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.DAO.AddressDAO;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AddressModel;

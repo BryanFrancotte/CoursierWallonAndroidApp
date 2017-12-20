@@ -46,7 +46,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
                     activity.getPickUpDateText().setText(text);
                     activity.setPickUpDate(selectedDate);
                 }else {
-                    Toast.makeText(activity, "erreur",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, this.getString(R.string.datePickerFragment_erreur),Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.date_time_layout_depositdate_button:
@@ -54,7 +54,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
                     activity.getDepositDateText().setText(text);
                     activity.setDepositDate(selectedDate);
                 }else {
-                    Toast.makeText(activity, "erreur",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, this.getString(R.string.datePickerFragment_erreur),Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

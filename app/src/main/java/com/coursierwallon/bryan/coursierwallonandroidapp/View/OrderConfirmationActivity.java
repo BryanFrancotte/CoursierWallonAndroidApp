@@ -80,19 +80,19 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         String text;
         switch (type){
             case OrderConstant.TYPE_S:
-                text = "parcel type S"; // TODO: faire ça avec @string
+                text = getString(R.string.OrderConfirmation_TypeS);
                 return text;
             case OrderConstant.TYPE_M:
-                text = "parcel type M"; // TODO: faire ça avec @string
+                text = getString(R.string.OrderConfirmation_TypeM);
                 return text;
             case OrderConstant.TYPE_L:
-                text = "parcel type L"; // TODO: faire ça avec @string
+                text = getString(R.string.OrderConfirmation_TypeL);
                 return text;
             case OrderConstant.TYPE_XL:
-                text = "parcel type XL"; // TODO: faire ça avec @string
+                text = getString(R.string.OrderConfirmation_TypeXL);
                 return text;
             default:
-                text = "None specified";
+                text = getString(R.string.OrderConfirmation_NoSpec);
                 return text;
         }
     }
@@ -100,16 +100,16 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         String text;
         switch (type) {
             case OrderConstant.DELIVERY_NORMAL:
-                text = "delivery type Normal"; // TODO: faire ça avec @string
+                text = getString(R.string.OrderConfirmation_DelTypeNormal); // TODO: faire ça avec @string
                 return text;
             case OrderConstant.DELIVERY_SEMI_EXPRESS:
-                text = "delivery type Semi Express"; // TODO: faire ça avec @string
+                text = getString(R.string.OrderConfirmation_DelTypeSemiExpress); // TODO: faire ça avec @string
                 return text;
             case OrderConstant.DELIVERY_EXPRESS:
-                text = "delivery type Express"; // TODO: faire ça avec @string
+                text = getString(R.string.OrderConfirmation_DelTypeExpress); // TODO: faire ça avec @string
                 return text;
             default:
-                text = "None specified"; // TODO: faire ça avec @string
+                text = getString(R.string.OrderConfirmation_DelTypeNoSpec); // TODO: faire ça avec @string
                 return text;
         }
     }
@@ -131,11 +131,11 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Integer result) {
             if(result == HttpURLConnection.HTTP_OK){
-                Toast.makeText(OrderConfirmationActivity.this,"OrderAdded", Toast.LENGTH_SHORT).show(); // TODO: faire ça avec @string
+                Toast.makeText(OrderConfirmationActivity.this, R.string.OrderConfirmation_Added, Toast.LENGTH_SHORT).show(); // TODO: faire ça avec @string
                 Intent intentToHome = new Intent(OrderConfirmationActivity.this, HomeActivity.class);
                 startActivity(intentToHome);
             }else{
-                Toast.makeText(OrderConfirmationActivity.this,"Somethig went wrong", Toast.LENGTH_SHORT).show(); // TODO: faire ça avec @string
+                Toast.makeText(OrderConfirmationActivity.this, R.string.OrderConfirmation_Error, Toast.LENGTH_SHORT).show(); // TODO: faire ça avec @string
             }
         }
     }
