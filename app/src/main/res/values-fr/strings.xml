@@ -98,6 +98,5 @@
     <string name="semi_express_delivery">Livraison semi-express</string>
     <string name="express_delivery">Livraison express</string>
     <string name="order_menu_next">Suivant</string>
-    <string name="error_empty_address">Aucune adresse selectionnée</string>
     <string name="connection_lost">Connection perdue</string>
 </resources>
