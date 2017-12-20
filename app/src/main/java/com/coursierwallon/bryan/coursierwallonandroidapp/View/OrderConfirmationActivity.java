@@ -1,7 +1,10 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -64,7 +67,14 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AddOrder().execute(newOrder);
+                ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                if(activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+                    new AddOrder().execute(newOrder);
+                }else {
+                    Toast.makeText(OrderConfirmationActivity.this, R.string.connection_lost, Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {

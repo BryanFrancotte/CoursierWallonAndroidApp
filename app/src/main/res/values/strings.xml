@@ -30,6 +30,7 @@
     <string name="settings_label">Settings</string>
     <string name="error_empty_address">Address not selected!</string>
 
+    <string name="connection_lost">Connection lost</string>
     <string name="empty_input_error">The email and the password can\'t be empty!</string>
     <string name="app_name">Coursier Wallon</string>
     <string name="addressPickerFragment_ok">Ok</string>
@@ -101,4 +102,6 @@
     <string name="wiegth_type_L">Weight : 60kg</string>
     <string name="dialog_add_address_postalCode">PostalCode</string>
     <string name="next_button">next</string>
+    <string name="app_name">CoursierWallon</string>
+    <string name="empty_input_error">The email and the password can not be empty!</string>
 </resources>

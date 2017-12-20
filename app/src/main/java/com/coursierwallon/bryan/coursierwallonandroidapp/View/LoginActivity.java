@@ -1,7 +1,10 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -42,7 +45,15 @@ public class LoginActivity extends AppCompatActivity{
                 String email = emailInput.getText().toString();
                 String password = passwordInput.getText().toString();
                 UserModel user = new UserModel(email, password);
-                new UserConnexion().execute(user);
+
+                ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                if(activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+                    new UserConnexion().execute(user);
+                }else{
+                    Toast.makeText(LoginActivity.this, R.string.connection_lost, Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
         });
 
