@@ -32,4 +32,5 @@
     <string name="title_activity_maps">Adresse de retrait</string>
     <string name="title_activity_deposit">Adresse de destination</string>
     <string name="error_empty_address">Aucune adresse selectionnée</string>
+    <string name="connection_lost">Connection perdue</string>
 </resources>

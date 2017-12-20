@@ -1,6 +1,9 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.View;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +51,14 @@ public class SignUpActivity extends AppCompatActivity{
                         passwordConfirm.getText().toString()
                 );
                 if(newUser.isvalid()){
-                    new Registration().execute(newUser);
+                    ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                    if(activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+                        new Registration().execute(newUser);
+                    }else{
+                        Toast.makeText(SignUpActivity.this, R.string.connection_lost, Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 }else{
                     Toast.makeText(SignUpActivity.this, "Information non valid", Toast.LENGTH_SHORT).show();// TODO : faire ça avec @string
                 }

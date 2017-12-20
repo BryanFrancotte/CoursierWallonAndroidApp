@@ -1,9 +1,15 @@
 package com.coursierwallon.bryan.coursierwallonandroidapp.ViewTemplates;
 
+
+import android.app.AlertDialog;
 import android.app.DialogFragment;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -96,7 +102,15 @@ public abstract class AddressPicker extends AppCompatActivity implements OnMapRe
         mapFragment.getMapAsync(this);
 
         addressList = findViewById(R.id.list_address);
-        new GetAllPickupAddressByUser().execute(userId, token);
+        ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        if(activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+            new GetAllPickupAddressByUser().execute(userId, token);
+        }else{
+            Toast.makeText(AddressPicker.this, R.string.connection_lost, Toast.LENGTH_SHORT).show();
+            finish();
+        }
     }
 
     @Override
