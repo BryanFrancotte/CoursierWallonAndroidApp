@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Rue" />
+        android:hint="@string/dialog_add_address_street" />
 
     <EditText
         android:id="@+id/dialog_add_address_houseNumber"
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="N° de maison" />
+        android:hint="@string/dialog_add_address_houseNumber" />
 
     <EditText
         android:id="@+id/dialog_add_address_boxNumber"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="N° de boite (optionnel)" />
+        android:hint="@string/dialog_add_address_boxNumber" />
 
     <EditText
         android:id="@+id/dialog_add_address_locality"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Commune" />
+        android:hint="@string/dialog_add_address_locality" />
 
     <EditText
         android:id="@+id/dialog_add_address_postalCode"
@@ -41,6 +41,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        android:hint="Code postal"/>
+        android:hint="@string/dialog_add_address_postalCode"/>
 
 </LinearLayout>

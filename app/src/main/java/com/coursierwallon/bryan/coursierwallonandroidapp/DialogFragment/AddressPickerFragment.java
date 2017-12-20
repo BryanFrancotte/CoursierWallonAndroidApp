@@ -59,13 +59,13 @@ public class AddressPickerFragment extends DialogFragment {
         // Pass null as the parent view because its going in the dialog layout
         builder.setView(inflater.inflate(R.layout.dialog_add_address_form, null))
                 // Add action buttons
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.addressPickerFragment_ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         AddressPickerFragment.this.action();
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.addressPickerFragment_cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         AddressPickerFragment.this.getDialog().cancel();
                     }
@@ -92,7 +92,7 @@ public class AddressPickerFragment extends DialogFragment {
             );
             activity.actionOnDialog(newAddress);
         }else{
-            Toast.makeText(activity, "Invalid address", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.addressPickerFragment_invalidAddress, Toast.LENGTH_SHORT).show();
         }
     }
 }

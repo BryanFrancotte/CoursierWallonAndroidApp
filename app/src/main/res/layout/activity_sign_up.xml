@@ -33,7 +33,7 @@
                 android:layout_column="1">
                 <TextView
                     android:id="@+id/userLabel"
-                    android:text="Nom Prénom"
+                    android:text="@string/userLabel_signup"
                     android:textSize="10dp"
                     android:textColor="@color/coursierColorPrimary"
                     android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                     android:layout_column="0"/>
                 <EditText
                     android:id="@+id/userInput"
-                    android:hint="Nom Prénom"
+                    android:hint="@string/userInput_signup"
                     android:textColorHint="@color/coursierColorPrimaryHint"
                     android:textColor="@color/coursierColorPrimary"
                     android:backgroundTint="@color/coursierColorPrimary"

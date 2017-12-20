@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity{
                 Intent intentToHome = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(intentToHome);
             }else {
-                Toast.makeText(LoginActivity.this,"Something went wrong with the login", Toast.LENGTH_SHORT).show();// TODO: faire ça avec @string
+                Toast.makeText(LoginActivity.this, R.string.LoginActivity_Error, Toast.LENGTH_SHORT).show();// TODO: faire ça avec @string
             }
         }
     }
