@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "667589629472",
+    "firebase_url": "https://coursierwallonandroidapp.firebaseio.com",
+    "project_id": "coursierwallonandroidapp",
+    "storage_bucket": "coursierwallonandroidapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667589629472:android:36ab0a85f9dc839b",
+        "android_client_info": {
+          "package_name": "com.coursierwallon.bryan.coursierwallonandroidapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "667589629472-aqkas367s0tu88scn4mb0mcrblklssbq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.coursierwallon.bryan.coursierwallonandroidapp",
+            "certificate_hash": "c21e1f7d5a6afbd6c4be9f8b754c1d295d25d025"
+          }
+        },
+        {
+          "client_id": "667589629472-dj2dhnbn3g9h7oo69ekgjr6jkk6m35jq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-o75Tv6uuJ0KeJMoxiCxCqOOXApnFYiY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667589629472-dj2dhnbn3g9h7oo69ekgjr6jkk6m35jq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

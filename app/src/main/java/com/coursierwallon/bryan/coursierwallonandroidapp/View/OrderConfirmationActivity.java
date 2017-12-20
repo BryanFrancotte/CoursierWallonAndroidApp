@@ -109,7 +109,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
                 text = "delivery type Express"; // TODO: faire ça avec @string
                 return text;
             default:
-                text = "None specified";
+                text = "None specified"; // TODO: faire ça avec @string
                 return text;
         }
     }
@@ -131,11 +131,11 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Integer result) {
             if(result == HttpURLConnection.HTTP_OK){
-                Toast.makeText(OrderConfirmationActivity.this,"OrderAdded", Toast.LENGTH_SHORT).show();
+                Toast.makeText(OrderConfirmationActivity.this,"OrderAdded", Toast.LENGTH_SHORT).show(); // TODO: faire ça avec @string
                 Intent intentToHome = new Intent(OrderConfirmationActivity.this, HomeActivity.class);
                 startActivity(intentToHome);
             }else{
-                Toast.makeText(OrderConfirmationActivity.this,"Somethig went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(OrderConfirmationActivity.this,"Somethig went wrong", Toast.LENGTH_SHORT).show(); // TODO: faire ça avec @string
             }
         }
     }
