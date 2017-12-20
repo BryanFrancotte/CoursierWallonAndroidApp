@@ -18,33 +18,43 @@
             android:layout_height="match_parent"
             android:layout_weight=".50"
             tools:context="com.coursierwallon.bryan.coursierwallonandroidapp.View.MapsActivity" />
-
-        <RelativeLayout
-            android:id="@+id/loadingPanel"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
             android:layout_weight=".50"
-            android:gravity="center">
-
-            <ProgressBar
-                android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/address_picker_addAddress"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:indeterminate="true"
-                android:id="@+id/progressBar2" />
+                android:text="Add an address"
+                android:onClick="showAddAddressDialog"/>
 
-        </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/loadingPanel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
 
-        <ListView
-            android:id="@+id/list_address_pickup"
-            android:visibility="gone"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".50"
-            android:layout_marginTop="5dp"
-            android:layout_marginHorizontal="10dp"
-            android:layout_gravity="center_horizontal"
-            android:headerDividersEnabled="false">
-        </ListView>
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:id="@+id/progressBar2" />
+
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/list_address_pickup"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_gravity="center_horizontal"
+                android:headerDividersEnabled="false">
+            </ListView>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
