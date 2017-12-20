@@ -101,5 +101,8 @@
     <string name="wiegth_type_L">Weight : 60kg</string>
     <string name="dialog_add_address_postalCode">PostalCode</string>
     <string name="next_button">next</string>
+<<<<<<< develop
     <string name="connection_lost">Connection lost</string>
+=======
+>>>>>>> correction
 </resources>

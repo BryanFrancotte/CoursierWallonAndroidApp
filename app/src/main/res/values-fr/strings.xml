@@ -99,4 +99,8 @@
     <string name="semi_express_delivery">Livraison semi-express</string>
     <string name="express_delivery">Livraison express</string>
     <string name="order_menu_next">Suivant</string>
+<<<<<<< develop
+=======
+    <string name="connection_lost">Connection perdue</string>
+>>>>>>> correction
 </resources>
