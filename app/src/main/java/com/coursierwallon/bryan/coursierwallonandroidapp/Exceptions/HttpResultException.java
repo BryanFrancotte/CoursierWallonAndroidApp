@@ -25,7 +25,7 @@ public class HttpResultException extends Exception {
         }
         if(statusCode >= HttpURLConnection.HTTP_BAD_REQUEST){
             if(statusCode == HttpURLConnection.HTTP_BAD_REQUEST || statusCode == HttpURLConnection.HTTP_UNAUTHORIZED){
-                return Resources.getSystem().getString(R.string.HttpConnection_Unauthorized);
+                return "email error or password error";//Resources.getSystem().getString(R.string.HttpConnection_Unauthorized);
             }
             return Resources.getSystem().getString(R.string.HttpUrlConnection_ClientError);
         }

@@ -52,7 +52,6 @@ public class LoginActivity extends AppCompatActivity{
                     new UserConnexion().execute(user);
                 }else{
                     Toast.makeText(LoginActivity.this, R.string.connection_lost, Toast.LENGTH_SHORT).show();
-                    finish();
                 }
             }
         });
