@@ -30,6 +30,12 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
 
+        <service android:name=".FirebaseService.MyFirebaseTokenService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
         <service
             android:name=".FirebaseService.MyFirebaseMessagingService">
             <intent-filter>
@@ -74,7 +80,6 @@
             android:name=".View.SignUpActivity"
             android:label="@string/sign_up"
             android:parentActivityName=".View.LoginActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/CoursierTheme.NoToolbar"></activity>
         <activity
             android:name=".View.InfoSignUpActivity"
@@ -93,24 +98,19 @@
             android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"></activity>
         <activity
             android:name=".View.DateTimePickerActivity"
-            android:label="date And Time"
+            android:label="@string/date_And_Time"
             android:parentActivityName=".View.DepositParcelActivity"
             android:theme="@style/CoursierTheme.NoToolbar"></activity>
         <activity
             android:name=".View.ParcelTypePicker"
-            android:label="type"
+            android:label="@string/type"
             android:parentActivityName=".View.DateTimePickerActivity"
             android:theme="@style/CoursierTheme.NoToolbar"></activity>
         <activity
             android:name=".View.OrderConfirmationActivity"
-            android:label="Confirmation"
+            android:label="@string/Confirmation"
             android:parentActivityName=".View.ParcelTypePicker"
             android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"></activity>
-
-        <service
-            android:name=".MyService"
-            android:enabled="true"
-            android:exported="true"></service>
     </application>
 
 </manifest>

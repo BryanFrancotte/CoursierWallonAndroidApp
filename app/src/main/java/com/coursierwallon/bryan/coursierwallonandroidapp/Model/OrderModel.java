@@ -30,7 +30,6 @@ public class OrderModel {
     private AddressModel depositAddressNavigation;
     private AddressModel pickUpAddressNavigation;
     private ArrayList<ParcelModel> parcel = new ArrayList<>();
-    private String androidToken;
 
     public OrderModel(String state, String userIdOrder) {
         this.orderNumber = null;
@@ -39,7 +38,6 @@ public class OrderModel {
         this.billingAddress = null;
         this.pickUpAddress = null;
         this.depositAddress = null;
-        this.androidToken = FirebaseInstanceId.getInstance().getToken();
     }
 
     public String getState() {

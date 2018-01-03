@@ -102,5 +102,8 @@
     <string name="wiegth_type_L">Weight : 60kg</string>
     <string name="dialog_add_address_postalCode">PostalCode</string>
     <string name="next_button">next</string>
->>>>>>> Temporary merge branch 2
+    <string name="date_And_Time">date And Time</string>
+    <string name="type">type</string>
+    <string name="Confirmation">Confirmation</string>
+    >>>>>>> Temporary merge branch 2
 </resources>

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Constant.ApiConstant;
 import com.coursierwallon.bryan.coursierwallonandroidapp.DAO.UserDAO;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Exceptions.HttpResultException;
+import com.coursierwallon.bryan.coursierwallonandroidapp.FirebaseService.MyFirebaseTokenService;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.AccessToken;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.UserModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
@@ -104,6 +105,7 @@ public class LoginActivity extends AppCompatActivity{
             editor.putString(ApiConstant.TOKEN, token.getToken());
             if(editor.commit()) {
                 Intent intentToHome = new Intent(LoginActivity.this, HomeActivity.class);
+                new MyFirebaseTokenService(LoginActivity.this).onTokenRefresh();
                 startActivity(intentToHome);
             }else {
                 Toast.makeText(LoginActivity.this, R.string.LoginActivity_Error, Toast.LENGTH_SHORT).show();// TODO: faire ça avec @string

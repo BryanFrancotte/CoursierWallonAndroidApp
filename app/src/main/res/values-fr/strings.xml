@@ -99,5 +99,7 @@
     <string name="semi_express_delivery">Livraison semi-express</string>
     <string name="express_delivery">Livraison express</string>
     <string name="order_menu_next">Suivant</string>
->>>>>>> Temporary merge branch 2
+    <string name="type">type</string>
+    <string name="Confirmation">Confirmation</string>
+    >>>>>>> Temporary merge branch 2
 </resources>
