@@ -105,5 +105,11 @@
     <string name="date_And_Time">date And Time</string>
     <string name="type">type</string>
     <string name="Confirmation">Confirmation</string>
+    <string name="bag_username">Lastname and firstname must be longeur than 3 caracter</string>
+    <string name="bad_email">This email is invalid</string>
+    <string name="bad_password">the password must longeur than 8 caracter must contains a capital letter and a number</string>
+    <string name="password_mismatch">The password don\'t match</string>
+    <string name="other_error">Unexpected error came out</string><![CDATA[
     >>>>>>> Temporary merge branch 2
+]]>
 </resources>

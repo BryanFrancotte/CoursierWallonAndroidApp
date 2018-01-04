@@ -101,5 +101,12 @@
     <string name="order_menu_next">Suivant</string>
     <string name="type">type</string>
     <string name="Confirmation">Confirmation</string>
+    <string name="date_And_Time">Date et heure</string>
+    <string name="bag_username">Le nom et le prénom doivent faire plus de 3 charactère</string>
+    <string name="bad_email">Cette adesse mail est invalide</string>
+    <string name="bad_password">le mot de passe doit être plus long que  caractère avoire une majuscule et un chiffre</string>
+    <string name="password_mismatch">les mots de passe ne correspondent pas</string>
+    <string name="other_error">Un erreur innatendue est survenue</string><![CDATA[
     >>>>>>> Temporary merge branch 2
+]]>
 </resources>
