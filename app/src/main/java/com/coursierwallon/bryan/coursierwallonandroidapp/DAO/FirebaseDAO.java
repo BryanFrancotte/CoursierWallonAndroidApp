@@ -27,9 +27,9 @@ public class FirebaseDAO {
         URL url =  new URL(ApiConstant.URL_BASE + ApiConstant.URL_UPDATE_FIREBASE_TOKEN);
 
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
         connection.setDoInput(false);
         connection.setDoOutput(true);
+        connection.setRequestMethod("POST");
         connection.setRequestProperty("Authorization", "Bearer " + token);
         connection.setRequestProperty("Content-Type", "application/json");
 

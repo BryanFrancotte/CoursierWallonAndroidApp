@@ -104,11 +104,23 @@ public class LoginActivity extends AppCompatActivity{
             SharedPreferences.Editor editor = preferences.edit();
             editor.putString(ApiConstant.TOKEN, token.getToken());
             if(editor.commit()) {
-                Intent intentToHome = new Intent(LoginActivity.this, HomeActivity.class);
-                new MyFirebaseTokenService(LoginActivity.this).onTokenRefresh();
-                startActivity(intentToHome);
+                new RefreshingToken().execute();
             }else {
-                Toast.makeText(LoginActivity.this, R.string.LoginActivity_Error, Toast.LENGTH_SHORT).show();// TODO: faire ça avec @string
+                Toast.makeText(LoginActivity.this, R.string.LoginActivity_Error, Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        private class RefreshingToken extends AsyncTask<Void, Void, Void>{
+            @Override
+            protected Void doInBackground(Void... voids) {
+                new MyFirebaseTokenService(LoginActivity.this).onTokenRefresh();
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                Intent intentToHome = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intentToHome);
             }
         }
     }

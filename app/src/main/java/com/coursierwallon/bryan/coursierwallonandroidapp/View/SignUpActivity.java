@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.coursierwallon.bryan.coursierwallonandroidapp.DAO.UserDAO;
+import com.coursierwallon.bryan.coursierwallonandroidapp.Enum.SignInErrorCode;
 import com.coursierwallon.bryan.coursierwallonandroidapp.Model.UserModel;
 import com.coursierwallon.bryan.coursierwallonandroidapp.R;
 
@@ -50,17 +51,33 @@ public class SignUpActivity extends AppCompatActivity{
                         password.getText().toString(),
                         passwordConfirm.getText().toString()
                 );
-                if(newUser.isvalid()){
-                    ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-                    NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-                    if(activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
-                        new Registration().execute(newUser);
-                    }else{
-                        Toast.makeText(SignUpActivity.this, R.string.connection_lost, Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                }else{
-                    Toast.makeText(SignUpActivity.this, R.string.SignUp_InfoError, Toast.LENGTH_SHORT).show();// TODO : faire ça avec @string
+
+                SignInErrorCode code = newUser.isValid();
+                switch (code){
+                    case BADUSERNAME:
+                        Toast.makeText(SignUpActivity.this, R.string.bag_username, Toast.LENGTH_SHORT).show();
+                        break;
+                    case BADEMAIL:
+                        Toast.makeText(SignUpActivity.this, R.string.bad_email, Toast.LENGTH_SHORT).show();
+                        break;
+                    case BADPASSWORD:
+                        Toast.makeText(SignUpActivity.this, R.string.bad_password, Toast.LENGTH_SHORT).show();
+                        break;
+                    case PASSWORDMISSMATCH:
+                        Toast.makeText(SignUpActivity.this, R.string.password_mismatch, Toast.LENGTH_SHORT).show();
+                        break;
+                    case OK:
+                        ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                        if(activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+                            new Registration().execute(newUser);
+                        }else{
+                            Toast.makeText(SignUpActivity.this, R.string.connection_lost, Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                        break;
+                    default:
+                        Toast.makeText(SignUpActivity.this, R.string.other_error, Toast.LENGTH_SHORT).show();
                 }
             }
         });
