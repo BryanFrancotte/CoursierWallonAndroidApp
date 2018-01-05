@@ -99,16 +99,19 @@
         <activity
             android:name=".View.DateTimePickerActivity"
             android:label="@string/date_And_Time"
+            android:screenOrientation="portrait"
             android:parentActivityName=".View.DepositParcelActivity"
             android:theme="@style/CoursierTheme.NoToolbar"></activity>
         <activity
             android:name=".View.ParcelTypePicker"
             android:label="@string/type"
+            android:screenOrientation="portrait"
             android:parentActivityName=".View.DateTimePickerActivity"
             android:theme="@style/CoursierTheme.NoToolbar"></activity>
         <activity
             android:name=".View.OrderConfirmationActivity"
             android:label="@string/Confirmation"
+            android:screenOrientation="portrait"
             android:parentActivityName=".View.ParcelTypePicker"
             android:theme="@style/CoursierTheme.RedBackgroud.NoToolbar"></activity>
     </application>
